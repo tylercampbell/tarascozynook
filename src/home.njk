@@ -3,14 +3,14 @@ permalink: /
 layout: "page.njk"
 bgcolors:
   - 'bg-gradient-to-br from-blue-200 to-indigo-400'
-  - 'bg-gradient-to-br from-red-200 to-red-400'
-  - 'bg-gradient-to-br from-orange-200 to-orange-300'
   - 'bg-gradient-to-br from-green-200 to-green-400'
+  - 'bg-gradient-to-br from-orange-200 to-orange-300'
+  - 'bg-gradient-to-br from-red-200 to-red-400'
 fgcolors:
   - 'text-blue-900/75'
-  - 'text-red-900/75'
-  - 'text-amber-900/75'
   - 'text-green-900/75'
+  - 'text-amber-900/75'
+  - 'text-red-900/75'
 ---
 <body>
   <header class="bg-gradient-to-br from-purple-700 to-purple-900 p-12 relative">
@@ -35,8 +35,8 @@ fgcolors:
             {% for series, seriesData in categoryData.series %}
               {% for book in seriesData.books %}
                 <li>
-                  <a href="{{ book.href }}">
-                    {% pic book.image, book.name, "object-contain ring-8 ring-transparent rounded hover:ring-white/50 shadow-xl shadow-black/25" %}
+                  <a href="{{ book.href }}" class="group">
+                    {% pic book.image, book.name, "object-contain ring-2 ring-white rounded shadow-xl shadow-black/30 transition group-hover:shadow-black/50 group-hover:-rotate-2 group-hover:-translate-y-2" %}
                   </a>
                 </li>
               {% endfor %}
