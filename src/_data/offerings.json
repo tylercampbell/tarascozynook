@@ -1,0 +1,152 @@
+{
+  "coloring": {
+    "name": "Coloring Books",
+    "series": {
+      "blooms": {
+        "name": "Petals & Paths",
+        "books": [
+          {
+            "name": "Exquisite Blooms",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CFCW7NSY",
+            "image": "src/images/coloring - blooms - exquisite.jpg"
+          },
+          {
+            "name": "111 Enchanting Blooms",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CCCJ6G2M",
+            "image": "src/images/coloring - blooms - enchanting.jpg"
+          },
+          {
+            "name": "Magnificent Blooms",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CCCVTBKY",
+            "image": "src/images/coloring - blooms - magnificent.jpg"
+          }
+        ]
+      },
+      "misc": {
+        "name": "Miscellaneous",
+        "books": [
+          {
+            "name": "Positive Affirmations",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CHCSV6DC",
+            "image": "./src/images/coloring - affirmations.jpg"
+          },
+          {
+            "name": "Fantastic Sea Creatures",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0C7JCBB2P",
+            "image": "src/images/coloring - sea creatures.jpg"
+          },
+          {
+            "name": "Birds of the World",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0C7JJ9NWX",
+            "image": "src/images/coloring - birds.jpg"
+          }
+        ]
+      }
+    }
+  },
+  "activity": {
+    "name": "Activity Books",
+    "series": {
+      "search": {
+        "name": "Word Search",
+        "books": [
+          {
+            "name": "Large Print Word Search",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CJLMV46R",
+            "image": "src/images/word search.jpg"
+          }
+        ]
+      }
+    }
+  },
+  "journal": {
+    "name": "Guided Journals",
+    "series": {
+      "misc": {
+        "name": "Miscellaneous",
+        "books": [
+          {
+            "name": "Gratitude Journal",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CLNX31T9",
+            "image": "./src/images/journal - gratitude.jpg"
+          }
+        ]
+      }
+    }
+  },
+  "notebook": {
+    "name": "Composition Notebooks",
+    "series": {
+      "misc": {
+        "name": "Miscellaneous",
+        "books": [
+          {
+            "name": "Cute Cactus Composition Notebook",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CCZZZJH3",
+            "image": "src/images/notebook - cute cactus.jpg"
+          },
+          {
+            "name": "Purple Composition Notebook",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CFZKZFBT",
+            "image": "src/images/notebook - purple.jpg"
+          },
+          {
+            "name": "Blue & Gold Floral Composition Notebook",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CDFPZXMD",
+            "image": "src/images/notebook - blue gold.jpg"
+          }
+        ]
+      },
+      "boho": {
+        "name": "Boho",
+        "books": [
+          {
+            "name": "Boho Plants Composition Notebook",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CF4CWKZ1",
+            "image": "src/images/notebook - boho - plant.jpg"
+          },
+          {
+            "name": "Boho Desert Composition Notebook",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CF48R6SX",
+            "image": "src/images/notebook - boho - desert.jpg"
+          },
+          {
+            "name": "Boho Minimal Composition Notebook",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CF4NWGWG",
+            "image": "src/images/notebook - boho - minimal.jpg"
+          },
+          {
+            "name": "Boho Decor Composition Notebook",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CF4J4WNZ",
+            "image": "src/images/notebook - boho - decor.jpg"
+          }
+        ]
+      },
+      "neon": {
+        "name": "Neon",
+        "books": [
+          {
+            "name": "Neon Flowers Composition Notebook",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CDFPR9R4",
+            "image": "src/images/notebook - neon - flower.jpg"
+          },
+          {
+            "name": "Neon Monstera Composition Notebook",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CDFJQ4VN",
+            "image": "src/images/notebook - neon - monstera.jpg"
+          },
+          {
+            "name": "Neon Jungle Composition Notebook",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CDFTQHWP",
+            "image": "src/images/notebook - neon - jungle.jpg"
+          },
+          {
+            "name": "Neon Hibiscus Composition Notebook",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CDFJQ6XN",
+            "image": "src/images/notebook - neon - hibiscus.jpg"
+          }
+        ]
+      }
+    }
+  }
+}

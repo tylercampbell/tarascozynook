@@ -1,0 +1,45 @@
+---
+permalink: /
+layout: "page.njk"
+bgcolors:
+  - 'bg-red-200'
+  - 'bg-blue-200'
+  - 'bg-green-200'
+  - 'bg-yellow-200'
+fgcolors:
+  - 'text-red-900/80'
+  - 'text-blue-900/80'
+  - 'text-green-900/80'
+  - 'text-yellow-900/80'
+---
+<body>
+  <header class="bg-purple-200 p-8">
+    <h1 class="text-center font-black text-6xl mb-6 text-purple-950/80">Tara's Cozy Nook</h1>
+    <nav class="bg-purple-950/50 rounded-full mx-auto w-min p-4 flex gap-x-8 px-8">
+      {% for category, categoryData in offerings %}
+        <a href="#{{ categoryData.name }}" class="text-blue-50 font-bold text-lg whitespace-nowrap hover:underline">{{ categoryData.name }}</a>
+      {% endfor %}
+    </nav>
+  </header>
+
+  <main>
+    <ul>
+      {% for category, categoryData in offerings %}
+        <li class="{{ bgcolors[loop.index % bgcolors.length] }} px-8 py-16">
+          <h2 id="{{ categoryData.name }}" class="text-4xl font-black {{ fgcolors[loop.index % fgcolors.length] }} mb-6">{{ categoryData.name }}</h2>
+          <ul class="flex flex-wrap gap-16">
+            {% for series, seriesData in categoryData.series %}
+              {% for book in seriesData.books %}
+                <li class="w-full sm:w-5/12 xl:w-1/4 max-w-lg">
+                  <a href="{{ book.href }}" class="group">
+                    {% pic book.image, book.name, "ring-8 ring-transparent group-hover:ring-white object-contain" %}
+                  </a>
+                </li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+  </main>
+</body>
