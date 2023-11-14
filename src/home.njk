@@ -2,37 +2,41 @@
 permalink: /
 layout: "page.njk"
 bgcolors:
+  - 'bg-blue-200'
   - 'bg-red-100'
-  - 'bg-blue-100'
   - 'bg-amber-100'
-  - 'bg-green-100'
+  - 'bg-green-200'
 fgcolors:
-  - 'text-red-950/75'
-  - 'text-blue-950/75'
-  - 'text-amber-950/75'
-  - 'text-green-950/75'
+  - 'text-blue-800/75'
+  - 'text-red-800/75'
+  - 'text-amber-800/75'
+  - 'text-green-800/75'
 ---
 <body>
-  <header class="bg-purple-300 p-8">
-    <h1 class="text-center font-black text-6xl mb-6 text-purple-950/80">Tara's Cozy Nook</h1>
-    <nav class="bg-purple-950/50 rounded-full mx-auto w-min p-4 flex gap-x-8 px-8">
+  <header class="bg-purple-700/75 p-12 relative">
+    <h1 class="text-center font-black text-4xl sm:text-6xl mb-6 text-emerald-300">Tara's Cozy Nook</h1>
+    <nav class="mx-auto w-fit bg-orange-200 divide-yellow-900/25 rounded-2xl divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 border-b-4 border-orange-900/50 shadow-xl shadow-purple-950/25
+      grid grid-cols-1 sm:grid-cols-4
+      ">
       {% for category, categoryData in offerings %}
-        <a href="#{{ categoryData.name }}" class="text-blue-50 font-bold text-lg whitespace-nowrap hover:underline">{{ categoryData.name }}</a>
+        <div class="flex p-4 text-center place-items-center justify-center">
+          <a href="#{{ categoryData.name }}" class="font-bold sm:text-lg text-amber-950 hover:underline">{{ categoryData.name }}</a>
+        </div>
       {% endfor %}
     </nav>
   </header>
 
   <main>
-    <ul>
+    <ul class="">
       {% for category, categoryData in offerings %}
-        <li class="{{ bgcolors[loop.index % bgcolors.length] }} px-8 py-16">
-          <h2 id="{{ categoryData.name }}" class="text-4xl font-black {{ fgcolors[loop.index % fgcolors.length] }} mb-6">{{ categoryData.name }}</h2>
-          <ul class="flex flex-wrap gap-16">
+        <li class="{{ bgcolors[loop.index0 % bgcolors.length] }} px-8 py-16">
+          <h2 id="{{ categoryData.name }}" class="text-2xl sm:text-4xl font-black {{ fgcolors[loop.index0 % fgcolors.length] }} mb-6">{{ categoryData.name }}</h2>
+          <ul class="gap-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ">
             {% for series, seriesData in categoryData.series %}
               {% for book in seriesData.books %}
-                <li class="w-full sm:w-5/12 xl:w-1/4 max-w-lg">
+                <li class="">
                   <a href="{{ book.href }}" class="group">
-                    {% pic book.image, book.name, "ring-8 ring-transparent group-hover:ring-white object-contain" %}
+                    {% pic book.image, book.name, "ring-8 ring-black/10 rounded group-hover:ring-white object-contain" %}
                   </a>
                 </li>
               {% endfor %}
