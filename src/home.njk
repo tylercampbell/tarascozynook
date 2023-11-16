@@ -1,19 +1,31 @@
 ---
 permalink: /
 layout: "page.njk"
-bgcolors:
-  - 'bg-gradient-to-br from-blue-200 to-indigo-400'
-  - 'bg-gradient-to-br from-green-200 to-green-400'
-  - 'bg-gradient-to-br from-orange-200 to-orange-300'
-  - 'bg-gradient-to-br from-red-200 to-red-400'
-fgcolors:
+
+bgColors:
+  - 'bg-gradient-to-b from-blue-200 to-indigo-400'
+  - 'bg-gradient-to-b from-green-200 to-green-400'
+  - 'bg-gradient-to-b from-orange-200 to-orange-300'
+  - 'bg-gradient-to-b from-red-200 to-red-400'
+fgColors:
   - 'text-blue-900/75'
   - 'text-green-900/75'
   - 'text-amber-900/75'
   - 'text-red-900/75'
+
+topColors:
+  - 'bg-purple-900'
+  - 'bg-indigo-400'
+  - 'bg-green-400'
+  - 'bg-orange-300'
+botColors:
+  - 'fill-blue-200'
+  - 'fill-green-200'
+  - 'fill-orange-200'
+  - 'fill-red-200'
 ---
 <body>
-  <header class="bg-gradient-to-br from-purple-700 to-purple-900 p-12 relative">
+  <header class="bg-gradient-to-b from-purple-700 to-purple-900 p-12 relative">
     <h1 class="text-center font-black text-4xl sm:text-6xl mb-6 text-emerald-300">Tara's Cozy Nook</h1>
     <nav class="mx-auto w-fit bg-orange-200 divide-yellow-900/25 rounded-2xl divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 border-b-4 border-orange-900/50 shadow-xl shadow-orange-900/50
       grid grid-cols-1 sm:grid-cols-4
@@ -28,9 +40,26 @@ fgcolors:
 
   <main>
     <ul class="">
+
       {% for category, categoryData in offerings %}
-        <li class="{{ bgcolors[loop.index0 % bgcolors.length] }} px-8 py-16">
-          <h2 id="{{ categoryData.name }}" class="scroll-mt-6 text-2xl sm:text-4xl font-black {{ fgcolors[loop.index0 % fgcolors.length] }} mb-6">{{ categoryData.name }}</h2>
+        {% set colors = {
+          top: topColors[loop.index0 % topColors.length],
+          bot: botColors[loop.index0 % botColors.length],
+          bg: bgColors[loop.index0 % bgColors.length],
+          fg: fgColors[loop.index0 % fgColors.length]}
+        %}
+
+        <svg width="100%" height="16" class="{{ colors.top }}">
+          <defs>
+            <pattern id="sawtoothPattern{{loop.index0}}" width="32" height="16" patternUnits="userSpaceOnUse">
+              <polygon points="0,16 16,0 32,16" class="{{ colors.bot }}"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="16" fill="url(#sawtoothPattern{{loop.index0}})"/>
+        </svg>
+
+        <li class="{{ colors.bg }} px-8 py-16">
+          <h2 id="{{ categoryData.name }}" class="scroll-mt-6 text-2xl sm:text-4xl font-black {{ colors.fg }} mb-6">{{ categoryData.name }}</h2>
           <ul class="gap-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ">
             {% for series, seriesData in categoryData.series %}
               {% for book in seriesData.books %}
