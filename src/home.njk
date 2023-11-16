@@ -2,15 +2,10 @@
 permalink: /
 layout: "page.njk"
 bgcolors:
-  - 'bg-gradient-to-b from-blue-200 to-indigo-400'
-  - 'bg-gradient-to-b from-green-200 to-green-400'
-  - 'bg-gradient-to-b from-orange-200 to-orange-300'
-  - 'bg-gradient-to-b from-red-200 to-red-400'
-scoopcolors:
-  - 'bg-purple-900'
-  - 'bg-indigo-400'
-  - 'bg-green-400'
-  - 'bg-orange-300'
+  - 'bg-gradient-to-br from-blue-200 to-indigo-400'
+  - 'bg-gradient-to-br from-green-200 to-green-400'
+  - 'bg-gradient-to-br from-orange-200 to-orange-300'
+  - 'bg-gradient-to-br from-red-200 to-red-400'
 fgcolors:
   - 'text-blue-900/75'
   - 'text-green-900/75'
@@ -18,8 +13,7 @@ fgcolors:
   - 'text-red-900/75'
 ---
 <body>
-
-  <header class="bg-gradient-to-b from-purple-700 to-purple-900 pt-6 sm:pt-12 px-8 pb-10 relative">
+  <header class="bg-gradient-to-br from-purple-700 to-purple-900 p-12 relative">
     <h1 class="text-center font-black text-4xl sm:text-6xl mb-6 text-emerald-300">Tara's Cozy Nook</h1>
     <nav class="mx-auto w-fit bg-orange-200 divide-yellow-900/25 rounded-2xl divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 border-b-4 border-orange-900/50 shadow-xl shadow-orange-900/50
       grid grid-cols-1 sm:grid-cols-4
@@ -33,26 +27,23 @@ fgcolors:
   </header>
 
   <main>
-    <ul>
+    <ul class="">
       {% for category, categoryData in offerings %}
-        <li class="{{ scoopcolors[loop.index0 % scoopcolors.length] }}">
-          <div class="{{ bgcolors[loop.index0 % bgcolors.length] }} px-8 pt-20 pb-10 scallop-top">
-            <h2 id="{{ categoryData.name }}" class="scroll-mt-8 text-2xl sm:text-4xl font-black {{ fgcolors[loop.index0 % fgcolors.length] }} mb-6">{{ categoryData.name }}</h2>
-            <ul class="gap-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ">
-              {% for series, seriesData in categoryData.series %}
-                {% for book in seriesData.books %}
-                  <li>
-                    <a href="{{ book.href }}" class="group">
-                      {% pic book.image, book.name, "object-contain ring-2 ring-white rounded shadow-xl shadow-black/30 transition group-hover:shadow-black/50 group-hover:-rotate-2 group-hover:-translate-y-2" %}
-                    </a>
-                  </li>
-                {% endfor %}
+        <li class="{{ bgcolors[loop.index0 % bgcolors.length] }} px-8 py-16">
+          <h2 id="{{ categoryData.name }}" class="scroll-mt-6 text-2xl sm:text-4xl font-black {{ fgcolors[loop.index0 % fgcolors.length] }} mb-6">{{ categoryData.name }}</h2>
+          <ul class="gap-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ">
+            {% for series, seriesData in categoryData.series %}
+              {% for book in seriesData.books %}
+                <li>
+                  <a href="{{ book.href }}" class="group">
+                    {% pic book.image, book.name, "object-contain ring-2 ring-white rounded shadow-xl shadow-black/30 transition group-hover:shadow-black/50 group-hover:-rotate-2 group-hover:-translate-y-2" %}
+                  </a>
+                </li>
               {% endfor %}
-            </ul>
-          </div>
+            {% endfor %}
+          </ul>
         </li>
       {% endfor %}
     </ul>
   </main>
-
 </body>
