@@ -1,22 +1,22 @@
 {
   "scripts": {
     "clean": "rimraf _site",
-    "dev":   "cross-env NODE_ENV=development npm run clean && eleventy --serve --incremental",
-    "build": "cross-env NODE_ENV=production  npm run clean && eleventy"
+    "dev":   "npm run clean && cross-env NODE_ENV=development eleventy --serve --incremental",
+    "build": "npm run clean && cross-env NODE_ENV=production eleventy"
   },
   "dependencies": {
-    "@11ty/eleventy": "2.0.1",
-    "@11ty/eleventy-img": "3.1.8",
+    "@11ty/eleventy": "3.0.0-alpha.14",
+    "@11ty/eleventy-img": "4.0.2",
     "@quasibit/eleventy-plugin-sitemap": "2.2.0",
     "eleventy-plugin-metagen": "1.8.3",
-    "tailwindcss": "3.3.5"
+    "tailwindcss": "3.4.4"
   },
   "devDependencies": {
     "cross-env": "7.0.3",
-    "html-minifier": "4.0.0",
+    "htmlnano": "2.1.1",
     "netlify-plugin-cache": "1.0.3",
-    "postcss": "8.4.31",
+    "postcss": "8.4.39",
     "postcss-lightningcss": "1.0.0",
-    "rimraf": "^5.0.0"
+    "rimraf": "5.0.0"
   }
 }
