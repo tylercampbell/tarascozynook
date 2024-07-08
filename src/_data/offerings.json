@@ -1,4 +1,39 @@
 {
+  "new": {
+    "name": "New Releases",
+    "series": {
+      "new": {
+        "name": "Word Search",
+        "books": [
+          {
+            "name": "Big Large Print Word Search for Adults and Seniors",
+            "href": "#",
+            "image": "src/images/word search 2024.jpg"
+          }
+        ]
+      }
+    }
+  },
+  "activity": {
+    "name": "Activity Books",
+    "series": {
+      "search": {
+        "name": "Word Search",
+        "books": [
+          {
+            "name": "Big Large Print Word Search for Adults and Seniors",
+            "href": "#",
+            "image": "src/images/word search 2024.jpg"
+          },
+          {
+            "name": "Large Print Word Search",
+            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CJLMV46R",
+            "image": "src/images/word search 2023.jpg"
+          }
+        ]
+      }
+    }
+  },
   "coloring": {
     "name": "Coloring Books",
     "series": {
@@ -44,21 +79,6 @@
             "name": "Birds of the World",
             "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0C7JJ9NWX",
             "image": "src/images/coloring - birds.jpg"
-          }
-        ]
-      }
-    }
-  },
-  "activity": {
-    "name": "Activity Books",
-    "series": {
-      "search": {
-        "name": "Word Search",
-        "books": [
-          {
-            "name": "Large Print Word Search",
-            "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CJLMV46R",
-            "image": "src/images/word search.jpg"
           }
         ]
       }
