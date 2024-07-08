@@ -1,4 +1,19 @@
 {
+  "new": {
+    "name": "New Releases",
+    "series": {
+      "new": {
+        "name": "Word Search",
+        "books": [
+          {
+            "name": "Big Large Print Word Search for Adults and Seniors",
+            "href": "#",
+            "image": "src/images/word search 2024.jpg"
+          }
+        ]
+      }
+    }
+  },
   "activity": {
     "name": "Activity Books",
     "series": {
