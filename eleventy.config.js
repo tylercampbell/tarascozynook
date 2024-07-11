@@ -5,7 +5,7 @@ module.exports = function(eleventyConfig) {
 
   // reload dev server from postcss output in package.json
   eleventyConfig.setServerOptions({
-    watch: ["_site/styles.css"],
+    watch: ["_site/*.{js,css}"],
   });
 
   // watch tailwind config for changes
@@ -27,8 +27,9 @@ module.exports = function(eleventyConfig) {
 
   // import external configs
   eleventyConfig.addPlugin(require('./src/_11ty/eleventy-img.js'))
-  eleventyConfig.addPlugin(require('./src/_11ty/html.js'))
+  eleventyConfig.addPlugin(require('./src/_11ty/esbuild.js'))
   eleventyConfig.addPlugin(require('./src/_11ty/postcss.js'))
+  eleventyConfig.addPlugin(require('./src/_11ty/html.js'))
 
   return {
     dir: {
