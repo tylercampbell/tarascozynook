@@ -10,15 +10,15 @@ const inputFileContents = fs.readFileSync(inputFile, 'utf-8');
 
 module.exports = (eleventyConfig) => {
 
-  // write file via eleventy.after
-  eleventyConfig.on('eleventy.after', async () => {
+  // write file via eleventy.before
+  eleventyConfig.on('eleventy.before', async () => {
     try {
       const result = await postcss([
         tailwind,
         lightningcss({
           browsers: 'defaults',
           lightningcssOptions: {
-            minify: (process.env.NODE_ENV === "production")
+            minify: (process.env.NODE_ENV === 'production')
           },
         }),
       ]).
@@ -35,6 +35,11 @@ module.exports = (eleventyConfig) => {
     } catch (error) {
       console.error(error);
     }
+  });
+
+  // reload dev server from postcss output in package.json
+  eleventyConfig.setServerOptions({
+    watch: ['_site/styles.css']
   });
 
 };

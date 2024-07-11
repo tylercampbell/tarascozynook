@@ -1,6 +1,6 @@
-import Alpine from 'alpinejs'
-window.Alpine = Alpine
-Alpine.start()
+// import Alpine from 'alpinejs'
+// window.Alpine = Alpine
+// Alpine.start()
 
 // const formElement = document.querySelector('form[name="contact"]');
 // const messageInput = document.getElementById('message');

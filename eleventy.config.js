@@ -3,15 +3,8 @@ const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 
 module.exports = function(eleventyConfig) {
 
-  // reload dev server from postcss output in package.json
-  eleventyConfig.setServerOptions({
-    watch: ["./_site/styles.min.css"],
-  });
-
   // passhthrough static files
-  eleventyConfig.addPassthroughCopy({ "./src/static": "/" });
-
-  // opt out of emulated passthrough during --serve
+  eleventyConfig.addPassthroughCopy({ "src/static": "/" });
   eleventyConfig.setServerPassthroughCopyBehavior("copy");
 
   // add plugins
@@ -23,9 +16,9 @@ module.exports = function(eleventyConfig) {
   });
 
   // import external configs
-  eleventyConfig.addPlugin(require('./src/_11ty/eleventy-img.js'))
+  eleventyConfig.addPlugin(require('./src/_11ty/image.js'))
   eleventyConfig.addPlugin(require('./src/_11ty/esbuild.js'))
-  eleventyConfig.addPlugin(require('./src/_11ty/postcss2.js'))
+  eleventyConfig.addPlugin(require('./src/_11ty/postcss.js'))
   eleventyConfig.addPlugin(require('./src/_11ty/html.js'))
 
   return {
