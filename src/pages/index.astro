@@ -1,42 +1,46 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Book from '../components/Book.astro';
-import SawtoothPattern from '../components/Sawtooth.astro';
+import Shelf from '../components/Shelf.astro';
 import Offerings from '../data/offerings.json';
 
-const sawColors = [
-  'fill-white',
-  'fill-purple-900',
-  'fill-emerald-400',
-  'fill-amber-200',
-  'fill-indigo-400',
-  'fill-red-400'
-];
-
-const fgColors = [
-  'text-purple-100/75',
-  'text-emerald-900/75',
-  'text-amber-900/75',
-  'text-blue-900/75',
-  'text-purple-900/75',
-  'text-red-900/75'
-];
-
-const bgColors = [
-  'bg-gradient-to-b from-purple-700 to-purple-900 ',
-  'bg-gradient-to-b from-emerald-200 to-emerald-400',
-  'bg-gradient-to-b from-amber-100 to-amber-200',
-  'bg-gradient-to-b from-blue-200 to-indigo-400',
-  'bg-gradient-to-b from-purple-200 to-purple-400',
-  'bg-gradient-to-b from-red-200 to-red-400'
+const colors = [
+  {
+    fg: 'text-purple-100/75',
+    bg: 'bg-gradient-to-b from-purple-700 to-purple-900',
+    saw: 'fill-purple-900'
+  },
+  {
+    fg: 'text-emerald-900/75',
+    bg: 'bg-gradient-to-b from-emerald-200 to-emerald-400',
+    saw: 'fill-emerald-400'
+  },
+  {
+    fg: 'text-amber-900/75',
+    bg: 'bg-gradient-to-b from-amber-100 to-amber-200',
+    saw: 'fill-amber-200'
+  },
+  {
+    fg: 'text-blue-900/75',
+    bg: 'bg-gradient-to-b from-blue-200 to-indigo-400',
+    saw: 'fill-indigo-400'
+  },
+  {
+    fg: 'text-purple-900/75',
+    bg: 'bg-gradient-to-b from-purple-200 to-purple-400',
+    saw: 'fill-purple-400'
+  },
+  {
+    fg: 'text-red-900/75',
+    bg: 'bg-gradient-to-b from-red-200 to-red-400',
+    saw: 'fill-red-400'
+  }
 ];
 ---
 
-<Layout title="Tara's cozy Nook">
+<Layout title="Tara's Cozy Nook">
 
-  <header class={`p-12 relative ${bgColors[0]}`}>
-    <h1 class={`text-center font-black text-4xl sm:text-6xl mb-6 ${fgColors[0]}`}>Tara's Cozy Nook</h1>
-    
+  <header class={`p-12 relative ${colors[0].bg}`}>
+    <h1 class={`text-center font-black text-4xl sm:text-6xl mt-6 mb-12 ${colors[0].fg}`}>Tara's Cozy Nook</h1>
     <nav class='mx-auto w-fit bg-orange-200 divide-yellow-900/25 rounded-2xl divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 border-b-4 border-orange-900/50 shadow-xl shadow-orange-900/50 grid grid-cols-1 sm:grid-cols-4'>
       {Object.values(Offerings).map(category => (
         <div class='flex p-4 text-center place-items-center justify-center'>
@@ -47,61 +51,38 @@ const bgColors = [
   </header>
 
   <main>
-    {/* New Article for New Books */}
-    <article class={bgColors[1]}>
-      <SawtoothPattern id="sawtoothPatternNew" colorClass={sawColors[1]} />
 
-      <section class='px-8 py-16'>
-        <h2 id='new-books' class={`scroll-mt-6 text-2xl sm:text-4xl font-black mb-6 ${fgColors[1]}`}>🎉 New Releases 🎉</h2>
-        <ul class='gap-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
-          {Object.keys(Offerings).flatMap(categoryKey => {
-            return Object.keys(Offerings[categoryKey].series).flatMap(seriesKey => {
-              return Offerings[categoryKey].series[seriesKey].books.filter(book => book.new).map(book => (
-                <li>
-                  <Book
-                    imagePath={book.image}
-                    bookName={book.name} 
-                    storePage={book.href}
-                    lazy={false}
-                  />
-                </li>
-              ));
-            });
-          })}
-        </ul>
-      </section>
-    </article>
-
-    {/* Existing Articles */}
+    <Shelf
+      id="new-books"
+      title="🎉 New Releases 🎉"
+      bgColorClass={colors[1].bg}
+      fgColorClass={colors[1].fg}
+      sawColorClass={colors[0].saw}
+      books={Object.keys(Offerings).flatMap(categoryKey => {
+        return Object.keys(Offerings[categoryKey].series).flatMap(seriesKey => {
+          return Offerings[categoryKey].series[seriesKey].books.filter(book => book.new);
+        });
+      })}
+    />
+    
     {Object.keys(Offerings).map((categoryKey, index) => {
       const categoryData = Offerings[categoryKey];
-      const sawColorClass = sawColors[(index % fgColors.length) + 2];
-      const fgColorClass =  fgColors[(index % fgColors.length) + 2];
-      const bgColorClass =  bgColors[(index % bgColors.length) + 2];
+      const bgFgColorIndex = (index + 2) % colors.length;
+      const sawColorIndex = (index + 1) % colors.length;
+      
       return (
-        <article class={bgColorClass}>
-          <SawtoothPattern id={`sawtoothPattern${index}`} colorClass={sawColorClass} />
-
-          <section class='px-8 py-16'>
-            <h2 id={categoryData.name.replace(/\s+/g, '-').toLowerCase()} class={`scroll-mt-6 text-2xl sm:text-4xl font-black mb-6 ${fgColorClass}`}>{categoryData.name}</h2>
-            <ul class='gap-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
-              {Object.keys(categoryData.series).map(seriesKey => {
-                const seriesData = categoryData.series[seriesKey];
-                return seriesData.books.map(book => (
-                  <li>
-                    <Book
-                      imagePath={book.image}
-                      bookName={book.name} 
-                      storePage={book.href}
-                    />
-                  </li>
-                ));
-              })}
-            </ul>
-          </section>
-        </article>
+        <Shelf
+          id={categoryData.name.replace(/\s+/g, '-').toLowerCase()}
+          title={categoryData.name}
+          bgColorClass={colors[bgFgColorIndex].bg}
+          fgColorClass={colors[bgFgColorIndex].fg}
+          sawColorClass={colors[sawColorIndex].saw}
+          books={Object.keys(categoryData.series).flatMap(seriesKey => {
+            return categoryData.series[seriesKey].books;
+          })}
+        />
       );
     })}
+    
   </main>
-
 </Layout>

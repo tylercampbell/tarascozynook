@@ -1,0 +1,41 @@
+---
+import Book from './Book.astro';
+import SawtoothPattern from './Sawtooth.astro';
+
+interface BookType {
+  image: string;
+  name: string;
+  href: string;
+}
+
+interface Props {
+  id: string;
+  title: string;
+  bgColorClass: string;
+  fgColorClass: string;
+  sawColorClass: string;
+  books: BookType[];
+}
+
+const { id, title, bgColorClass, fgColorClass, sawColorClass, books }: Props = Astro.props;
+---
+<article class={bgColorClass}>
+
+  <SawtoothPattern id={`sawtoothPattern${id}`} colorClass={sawColorClass} />
+  
+  <section class='px-8 py-16'>
+    <h2 id={id} class={`scroll-mt-6 text-2xl sm:text-4xl font-black mb-6 ${fgColorClass}`}>{title}</h2>
+    <ul class='gap-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
+      {books.map((book: BookType) => (
+        <li>
+          <Book
+            imagePath={book.image}
+            bookName={book.name}
+            storePage={book.href}
+          />
+        </li>
+      ))}
+    </ul>
+  </section>
+
+</article>
