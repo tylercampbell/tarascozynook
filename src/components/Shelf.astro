@@ -15,9 +15,10 @@ interface Props {
   fgColorClass: string;
   sawColorClass: string;
   books: BookType[];
+  lazy?: boolean;
 }
 
-const { id, title, bgColorClass, fgColorClass, sawColorClass, books }: Props = Astro.props;
+const { id, title, bgColorClass, fgColorClass, sawColorClass, books, lazy = true }: Props = Astro.props;
 ---
 <article class={bgColorClass}>
 
@@ -32,6 +33,7 @@ const { id, title, bgColorClass, fgColorClass, sawColorClass, books }: Props = A
             imagePath={book.image}
             bookName={book.name}
             storePage={book.href}
+            lazy={lazy}
           />
         </li>
       ))}

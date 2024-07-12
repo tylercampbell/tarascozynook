@@ -63,6 +63,7 @@ const colors = [
           return Offerings[categoryKey].series[seriesKey].books.filter(book => book.new);
         });
       })}
+      lazy={false}
     />
     
     {Object.keys(Offerings).map((categoryKey, index) => {
@@ -80,6 +81,7 @@ const colors = [
           books={Object.keys(categoryData.series).flatMap(seriesKey => {
             return categoryData.series[seriesKey].books;
           })}
+          lazy={true}
         />
       );
     })}
