@@ -1,4 +1,6 @@
 ---
+import { SEO } from "astro-seo";
+
 interface Props {
 	title: string;
 }
@@ -14,7 +16,19 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<!-- ty -->
+		<SEO
+      title={title}
+      description="Tara's Cozy Nook is making books with good looks."
+      openGraph={{
+        basic: {
+          title: "Tara's Cozy Nook is making books with good looks.",
+          type: "website",
+          image: "https://tarascozynook.com/ogimage.jpg",
+        }
+      }}
+    />
 	</head>
 	<body>
 		<slot />
