@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Book from '../components/Book.astro';
+import offerings from '../data/offerings.json';
+
+const sawColors = [
+  'fill-purple-900',
+  'fill-emerald-400',
+  'fill-amber-200',
+  'fill-indigo-400',
+  'fill-purple-400'
+];
+
+const fgColors = [
+  'text-emerald-900/75',
+  'text-amber-900/75',
+  'text-blue-900/75',
+  'text-purple-900/75',
+  'text-red-900/75'
+];
+
+const bgColors = [
+  'bg-gradient-to-b from-emerald-200 to-emerald-400',
+  'bg-gradient-to-b from-amber-100 to-amber-200',
+  'bg-gradient-to-b from-blue-200 to-indigo-400',
+  'bg-gradient-to-b from-purple-200 to-purple-400',
+  'bg-gradient-to-b from-red-200 to-red-400'
+];
+---
+
+<Layout title="Tara's cozy Nook">
+
+  <header class='bg-gradient-to-b from-purple-700 to-purple-900 p-12 relative'>
+    <h1 class='text-center font-black text-4xl sm:text-6xl mb-6 text-purple-100/75'>Tara's Cozy Nook</h1>
+    
+    <nav class='mx-auto w-fit bg-orange-200 divide-yellow-900/25 rounded-2xl divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 border-b-4 border-orange-900/50 shadow-xl shadow-orange-900/50 grid grid-cols-1 sm:grid-cols-4'>
+      {Object.values(offerings).map(category => (
+        <div class='flex p-4 text-center place-items-center justify-center'>
+          <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} class='font-bold sm:text-lg text-amber-950 hover:underline'>{category.name}</a>
+        </div>
+      ))}
+    </nav>
+  </header>
+
+  <main>
+    {/* New Article for New Books */}
+    <article class={bgColors[0]}>
+      <svg width='100%' height='16'>
+        <defs>
+          <pattern id={`sawtoothPatternNew`} width='32' height='16' patternUnits='userSpaceOnUse'>
+            <polygon points='0,0 16,16 32,0' class={sawColors[0]} />
+          </pattern>
+        </defs>
+        <rect width='100%' height='16' fill={`url(#sawtoothPatternNew)`} />
+      </svg>
+
+      <section class='px-8 py-16'>
+        <h2 id='new-books' class={`scroll-mt-6 text-2xl sm:text-4xl font-black mb-6 ${fgColors[0]}`}>🎉 New Releases 🎉</h2>
+        <ul class='gap-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
+          {Object.keys(offerings).flatMap(categoryKey => {
+            return Object.keys(offerings[categoryKey].series).flatMap(seriesKey => {
+              return offerings[categoryKey].series[seriesKey].books.filter(book => book.new).map(book => (
+                <li>
+                  <Book
+                    imagePath={book.image}
+                    bookName={book.name} 
+                    storePage={book.href}
+                    lazy={false}
+                  />
+                </li>
+              ));
+            });
+          })}
+        </ul>
+      </section>
+    </article>
+
+    {/* Existing Articles */}
+    {Object.keys(offerings).map((categoryKey, index) => {
+      const categoryData = offerings[categoryKey];
+      const bgColorClass = bgColors[index % bgColors.length + 1];
+      const fgColorClass = fgColors[index % fgColors.length + 1];
+      const sawColorClass = sawColors[index % fgColors.length + 1];
+      return (
+        <article class={bgColorClass}>
+          <svg width='100%' height='16'>
+            <defs>
+              <pattern id={`sawtoothPattern${index}`} width='32' height='16' patternUnits='userSpaceOnUse'>
+                <polygon points='0,0 16,16 32,0' class={sawColorClass} />
+              </pattern>
+            </defs>
+            <rect width='100%' height='16' fill={`url(#sawtoothPattern${index})`} />
+          </svg>
+
+          <section class='px-8 py-16'>
+            <h2 id={categoryData.name.replace(/\s+/g, '-').toLowerCase()} class={`scroll-mt-6 text-2xl sm:text-4xl font-black mb-6 ${fgColorClass}`}>{categoryData.name}</h2>
+            <ul class='gap-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
+              {Object.keys(categoryData.series).map(seriesKey => {
+                const seriesData = categoryData.series[seriesKey];
+                return seriesData.books.map(book => (
+                  <li>
+                    <Book
+                      imagePath={book.image}
+                      bookName={book.name} 
+                      storePage={book.href}
+                    />
+                  </li>
+                ));
+              })}
+            </ul>
+          </section>
+        </article>
+      );
+    })}
+  </main>
+
+</Layout>

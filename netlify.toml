@@ -1,16 +1,4 @@
+# example netlify.toml
 [build]
-  publish = "_site"
-  command = "npm run build"
-
-# POST BUILD OPTIMIZATIONS
-[build.processing]
-  skip_processing = true
-
-# NETLIFY PLUGINS
-[[plugins]]
-  package = "netlify-plugin-cache"
-  [plugins.inputs]
-    paths = [
-      "_site/img", # Eleventy-Image Disk Cache
-      ".cache" # Remote Asset Cache (not used currently)
-    ]
+  command = "astro build"
+  publish = "dist"
