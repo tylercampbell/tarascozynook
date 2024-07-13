@@ -2,39 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Shelf from '../components/Shelf.astro';
 import Offerings from '../data/offerings.json';
+import { getColors, getBooksByNewStatus, getBooksByCategory } from '../utils/helpers';
 
-const colors = [
-  {
-    fg: 'text-purple-100/75',
-    bg: 'bg-gradient-to-b from-purple-700 to-purple-900',
-    saw: 'fill-purple-900'
-  },
-  {
-    fg: 'text-emerald-900/75',
-    bg: 'bg-gradient-to-b from-emerald-200 to-emerald-400',
-    saw: 'fill-emerald-400'
-  },
-  {
-    fg: 'text-amber-900/75',
-    bg: 'bg-gradient-to-b from-amber-100 to-amber-200',
-    saw: 'fill-amber-200'
-  },
-  {
-    fg: 'text-blue-900/75',
-    bg: 'bg-gradient-to-b from-blue-200 to-indigo-400',
-    saw: 'fill-indigo-400'
-  },
-  {
-    fg: 'text-purple-900/75',
-    bg: 'bg-gradient-to-b from-purple-200 to-purple-400',
-    saw: 'fill-purple-400'
-  },
-  {
-    fg: 'text-red-900/75',
-    bg: 'bg-gradient-to-b from-red-200 to-red-400',
-    saw: 'fill-red-400'
-  }
-];
+const colors = getColors();
 ---
 
 <Layout title="Tara's Cozy Nook">
@@ -51,18 +21,13 @@ const colors = [
   </header>
 
   <main>
-
     <Shelf
       id="new-books"
       title="🎉 New Releases 🎉"
       bgColorClass={colors[1].bg}
       fgColorClass={colors[1].fg}
       sawColorClass={colors[0].saw}
-      books={Object.keys(Offerings).flatMap(categoryKey => {
-        return Object.keys(Offerings[categoryKey].series).flatMap(seriesKey => {
-          return Offerings[categoryKey].series[seriesKey].books.filter(book => book.new);
-        });
-      })}
+      books={getBooksByNewStatus(Offerings, true)}
       lazy={false}
     />
     
@@ -78,13 +43,10 @@ const colors = [
           bgColorClass={colors[bgFgColorIndex].bg}
           fgColorClass={colors[bgFgColorIndex].fg}
           sawColorClass={colors[sawColorIndex].saw}
-          books={Object.keys(categoryData.series).flatMap(seriesKey => {
-            return categoryData.series[seriesKey].books;
-          })}
+          books={getBooksByCategory(categoryData)}
           lazy={true}
         />
       );
     })}
-    
   </main>
 </Layout>
