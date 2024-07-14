@@ -11,10 +11,10 @@ const colors = getColors();
 
   <header class={`p-12 relative ${colors[0].bg}`}>
     <h1 class={`text-center font-black text-4xl sm:text-6xl mt-6 mb-12 ${colors[0].fg}`}>Tara's Cozy Nook</h1>
-    <nav class='mx-auto w-fit bg-orange-200 divide-yellow-900/25 rounded-2xl divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 border-b-4 border-orange-900/50 shadow-xl shadow-orange-900/50 grid grid-cols-1 sm:grid-cols-4'>
+    <nav class='mx-auto w-fit bg-orange-200 divide-yellow-900/25 rounded-2xl divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 border-b-4 border-orange-900/50 shadow-xl shadow-orange-900/40 grid grid-cols-1 sm:grid-cols-4'>
       {Object.values(Offerings).map(category => (
         <div class='flex p-4 text-center place-items-center justify-center'>
-          <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} class='font-bold sm:text-lg text-amber-950 hover:underline'>{category.name}</a>
+          <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} class='font-bold sm:text-lg text-amber-900/80 hover:underline hover:text-black'>{category.name}</a>
         </div>
       ))}
     </nav>
