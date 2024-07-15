@@ -1,12 +1,14 @@
 ---
 ---
 
-<div id="contact" class="relative w-full">
-  <p id="prompt" class="text-xl sm:text-2xl text-orange-900 font-bold text-center w-full py-4 tracking-wider">Send this card to <span class="text-orange-600">Tyler</span>?</p>
-  <div id="postcard" class="w-full max-w-2xl mx-auto p-3 aspect-[1.58] stripes shadow-2xl shadow-purple-900">
+<section id="contact" class="relative w-full">
+  <p id="prompt" class="text-xl sm:text-2xl text-orange-900 font-bold text-center w-full py-4 tracking-wider">
+    Send this card to <span class="text-orange-600">Tyler</span>?
+  </p>
+  <article id="postcard" class="w-full max-w-2xl mx-auto p-3 aspect-[1.58] stripes shadow-2xl shadow-purple-900">
     <form name="contact" method="POST" action="/#contact" data-netlify="true" class="relative h-full flex flex-col justify-between py-4 px-8 bg-white">
       <label for="message" class="text-sm sm:text-xl font-bold tracking-wider">Dear Tyler,</label>
-      <textarea id="message" name="message" placeholder="u have a nice page" rows='3' data-min-rows='3' class="text-center font-bold text-sm sm:text-xl border-none bg-transparent placeholder-rose-600 focus:ring-0 tracking-wider resize-none autoExpand"></textarea>
+      <textarea id="message" name="message" placeholder="u have a nice page" rows="3" data-min-rows="3" class="text-center font-bold text-sm sm:text-xl border-none bg-transparent placeholder-rose-600 focus:ring-0 tracking-wider resize-none autoExpand"></textarea>
       <div class="place-self-end -mr-5">
         <label for="sender" class="font-bold tracking-wider -mr-2 cursor-default text-sm sm:text-xl">From</label>
         <input id="sender" name="sender" placeholder="Your name" type="text" class="pt-px placeholder-rose-600 text-sm sm:text-xl min-w-[6ch] w-[12ch] max-w-sm font-bold tracking-wide border-none bg-transparent focus:ring-0">
@@ -19,11 +21,11 @@
         <p class="text-xl sm:text-2xl text-blue-600 font-bold text-center w-full py-4 tracking-wider">Hey thanks!</p>
       </div>
     </aside>
-  </div>
-</div>
+  </article>
+</section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', (event) => {
+  document.addEventListener('DOMContentLoaded', () => {
     const formElement = document.querySelector('form[name="contact"]');
     const messageInput = document.getElementById('message');
     const senderInput = document.getElementById('sender');
@@ -39,17 +41,8 @@
       }
     }
 
-    formElement.addEventListener('input', (e) => {
-      if (e.target === messageInput || e.target === senderInput) {
-        enableSubmitButton();
-      }
-    });
-
-    formElement.addEventListener('submit', handleFormSubmission);
-
     function handleFormSubmission(e) {
       e.preventDefault();
-
       const form = e.target;
       const { action } = form;
 
@@ -63,16 +56,16 @@
       const body = new URLSearchParams(formDataEntries).toString();
 
       fetch(action, { method: 'POST', headers, body })
-        .then(handleResponse)
-        .catch(handleError);
-    }
-
-    function handleResponse(response) {
-      if (response.ok) {
-        handleFormSubmissionSuccess();
-      } else {
-        throw new Error(`Network response was not ok. Response status: ${response.status}`);
-      }
+        .then(response => {
+          if (response.ok) {
+            handleFormSubmissionSuccess();
+          } else {
+            throw new Error(`Network response was not ok. Response status: ${response.status}`);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     }
 
     function handleFormSubmissionSuccess() {
@@ -81,19 +74,22 @@
       successElement.classList.replace('hidden', 'grid');
     }
 
-    function handleError(error) {
-      console.error('Error:', error);
-    }
+    formElement.addEventListener('input', (e) => {
+      if (e.target === messageInput || e.target === senderInput) {
+        enableSubmitButton();
+      }
+    });
+
+    formElement.addEventListener('submit', handleFormSubmission);
   });
 </script>
 
 <style>
   :root {
-    --white:  #ffffff;
-    --red:  #ca1f0e;
+    --white: #ffffff;
+    --red: #ca1f0e;
     --blue: #3251ac;
   }
-  /* https://stripesgenerator.com/ */
   .stripes {
     background-image: linear-gradient(135deg, 
       var(--red) 11.11%, var(--white) 11.11%, var(--white) 25%,
