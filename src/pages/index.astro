@@ -4,21 +4,20 @@ import Shelf from '../components/Shelf.astro';
 import Offerings from '../data/offerings.json';
 import { getColors, getBooksByNewStatus, getBooksByCategory } from '../utils/helpers';
 import ContactForm from '../components/ContactForm.astro';
-
 const colors = getColors();
 ---
 
 <Layout title="Tara's Cozy Nook">
 
   <ContactForm/>
-  
-  <header class={`p-12 relative ${colors[0].bg}`}>
-    <button id="slider" class="rounded-full px-8 py-2 bg-white font-bold">Contact Us</button>
-    <h1 class={`text-center font-black text-4xl sm:text-6xl mt-6 mb-12 ${colors[0].fg}`}>Tara's Cozy Nook</h1>
+
+  <header class={`p-12 relative flex flex-col ${colors[0].bg}`}>
+    <button id="sliderButton" class="self-end rounded-full px-6 py-3 tracking-wide font-bold text-white bg-violet-400 ring-4 ring-transparent border-b-4 border-indigo-700/30 shadow shadow-purple-600/25 hover:ring-violet-50 hover:bg-purple-400/50 hover:border-purple-700/50">Contact Us</button>
+    <h1 class={`text-center tracking-tighter font-black text-4xl sm:text-6xl mt-6 mb-12 ${colors[0].fg}`}>Tara's Cozy Nook</h1>
     <nav class='mx-auto w-fit bg-orange-200 divide-yellow-900/25 rounded-2xl divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 border-b-4 border-orange-900/50 shadow-xl shadow-orange-900/50 grid grid-cols-1 sm:grid-cols-4'>
       {Object.values(Offerings).map(category => (
         <div class='flex p-4 text-center place-items-center justify-center'>
-          <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} class='font-bold sm:text-lg text-amber-950 hover:underline'>{category.name}</a>
+          <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} class='tracking-wide font-bold sm:text-lg text-amber-950 hover:underline'>{category.name}</a>
         </div>
       ))}
     </nav>
