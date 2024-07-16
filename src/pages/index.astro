@@ -68,10 +68,19 @@ const colors = getColors();
     // Set the initial position of the form container above the viewport by its height
     formContainer.style.top = `-${contactFormHeight}px`;
     
+    let isFormVisible = false;
+    
     document.getElementById('sliderButton').addEventListener('click', function() {
-      // Scroll up to show the contact form and shift main content
-      formContainer.style.transform = `translateY(${contactFormHeight}px)`;
-      mainContainer.style.transform = `translateY(${contactFormHeight}px)`;
+      if (isFormVisible) {
+        // Hide the contact form
+        formContainer.style.transform = `translateY(0)`;
+        mainContainer.style.transform = `translateY(0)`;
+      } else {
+        // Show the contact form
+        formContainer.style.transform = `translateY(${contactFormHeight}px)`;
+        mainContainer.style.transform = `translateY(${contactFormHeight}px)`;
+      }
+      isFormVisible = !isFormVisible;
     });
   });
 </script>
