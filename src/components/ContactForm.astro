@@ -1,17 +1,18 @@
 ---
-import BoxTop from './SvgBoxTop.astro';
+import SvgBoxTop from './SvgBoxTop.astro';
 ---
 
 <section id="contact" class="relative w-full bg-stone-800 pt-16">
-  <BoxTop id="box" twClasses="absolute bottom-0" />
+
+  <SvgBoxTop id="box" twClasses="absolute bottom-0" />
   
   <aside id="success" class="absolute w-full h-full flex flex-col items-center justify-center text-center">
-      <div class="text-8xl flex">
-        <p class="-rotate-12 mt-2">🐶</p>
-        <p>🥳</p>
-        <p class="rotate-12">😸</p>
-      </div class="text-8xl">
-      <p class="text-6xl text-emerald-300 font-bold -rotate-3 mt-4">Hey thanks!</p>
+    <div class="text-8xl flex">
+      <p class="-rotate-12 mt-2">🐶</p>
+      <p>🥳</p>
+      <p class="rotate-12">😸</p>
+    </div>
+    <p class="text-6xl text-emerald-300 font-bold -rotate-3 mt-4">Hey thanks!</p>
   </aside>
 
   <article id="paper" class="relative w-full max-w-2xl mx-auto bg-gradient-to-b from-purple-50 via-purple-50 to-indigo-200 transition origin-bottom">
@@ -20,13 +21,39 @@ import BoxTop from './SvgBoxTop.astro';
       <textarea id="message" name="message" placeholder="u make nice books" rows="3" data-min-rows="3" class="mt-4 mb-16 bg-indigo-200/50 focus:bg-white rounded-lg border-none font-bold text-sm sm:text-xl placeholder-indigo-400 tracking-wider"></textarea>
       <label for="sender" class="font-bold tracking-wider cursor-default text-sm sm:text-xl">From,</label>
       <input id="sender" name="sender" placeholder="Your name" type="text" class="mt-2 max-w-xs bg-indigo-200/50 focus:bg-white rounded-lg border-none text-sm sm:text-xl placeholder-indigo-400 font-bold tracking-wide">
-      <button id="submit" disabled type="submit" class="mt-6 -rotate-6 self-end px-8 py-2 rounded-full cursor-pointer font-bold text-white sm:text-2xl disabled:cursor-not-allowed disabled:shadow-transparent disabled:opacity-50 bg-teal-500 border-transparent border-4 enabled:hover:bg-gradient-to-br enabled:hover:from-teal-400 enabled:hover:to-teal-600 enabled:hover:border-teal-300 focus:bg-teal-600 focus:border-teal-300">SEND</button>
+      <button id="submit" disabled type="submit" class="mt-6 self-end btn btn-green">SEND</button>
     </form>
   </article>
 
 </section>
 
 <script>
+  window.addEventListener('load', () => {
+    const formContainer = document.getElementById('form-container');
+    const mainContainer = document.getElementById('main-container');
+    
+    // Calculate the height of the contact form container
+    const contactFormHeight = formContainer.offsetHeight;
+    
+    // Set the initial position of the form container above the viewport by its height
+    formContainer.style.top = `-${contactFormHeight}px`;
+    
+    let isFormVisible = false;
+    
+    document.getElementById('sliderButton').addEventListener('click', function() {
+      if (isFormVisible) {
+        // Hide the contact form
+        formContainer.style.transform = `translateY(0)`;
+        mainContainer.style.transform = `translateY(0)`;
+      } else {
+        // Show the contact form
+        formContainer.style.transform = `translateY(${contactFormHeight}px)`;
+        mainContainer.style.transform = `translateY(${contactFormHeight}px)`;
+      }
+      isFormVisible = !isFormVisible;
+    });
+  });
+
   document.addEventListener('DOMContentLoaded', () => {
     const formElement = document.querySelector('form[name="contact"]');
     const messageInput = document.getElementById('message');
@@ -82,21 +109,3 @@ import BoxTop from './SvgBoxTop.astro';
     formElement.addEventListener('submit', handleFormSubmission);
   });
 </script>
-
-<style>
-  :root {
-    --white: #ffffff;
-    --red: #ca1f0e;
-    --blue: #3251ac;
-  }
-  .stripes {
-    background-image: linear-gradient(135deg, 
-      var(--red) 11.11%, var(--white) 11.11%, var(--white) 25%,
-      var(--blue) 25%, var(--blue) 36.11%, var(--white) 36.11%,
-      var(--white) 50%, var(--red) 50%, var(--red) 61.11%,
-      var(--white) 61.11%, var(--white) 75%, var(--blue) 75%,
-      var(--blue) 86.11%, var(--white) 86.11%, var(--white) 100%
-    );
-    background-size: 127.28px 127.28px;
-  }
-</style>

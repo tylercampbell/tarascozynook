@@ -1,27 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
 import Shelf from '../components/Shelf.astro';
 import Offerings from '../data/offerings.json';
 import { getColors, getBooksByNewStatus, getBooksByCategory } from '../utils/helpers';
-import ContactForm from '../components/ContactForm.astro';
 const colors = getColors();
 ---
 
 <Layout title="Tara's Cozy Nook">
-
   <div id="form-container" class="absolute w-full transition-transform duration-700">
     <ContactForm />
   </div>
 
   <main id="main-container" class="transition-transform duration-700">
-
     <header class={`p-12 relative flex flex-col ${colors[0].bg}`}>
-      <button id="sliderButton" class="self-end rounded-full px-6 py-3 tracking-wide font-bold text-white bg-violet-400 ring-4 ring-transparent border-b-4 border-indigo-700/30 shadow shadow-purple-600/25 hover:ring-violet-50 hover:bg-purple-400/50 hover:border-purple-700/50">Contact Us</button>
+      <button id="sliderButton" class="self-end btn btn-purple">Contact Us</button>
       <h1 class={`text-center tracking-tighter font-black text-4xl sm:text-6xl mt-6 mb-12 ${colors[0].fg}`}>Tara's Cozy Nook</h1>
-      <nav class='mx-auto w-fit bg-orange-200 divide-yellow-900/25 rounded-2xl divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 border-b-4 border-orange-900/50 shadow-xl shadow-orange-900/50 grid grid-cols-1 sm:grid-cols-4'>
+      <nav class="mx-auto w-fit bg-orange-200 divide-yellow-900/25 rounded-2xl divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 border-b-4 border-orange-900/50 shadow-lg shadow-orange-900/50 grid grid-cols-1 sm:grid-cols-4">
         {Object.values(Offerings).map(category => (
-          <div class='flex p-4 text-center place-items-center justify-center'>
-            <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} class='tracking-wide font-bold sm:text-lg text-amber-950 hover:underline'>{category.name}</a>
+          <div class="flex p-4 text-center place-items-center justify-center">
+            <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} class="tracking-wide font-bold sm:text-lg text-amber-950 hover:underline">{category.name}</a>
           </div>
         ))}
       </nav>
@@ -57,30 +55,22 @@ const colors = getColors();
   </main>
 </Layout>
 
-<script>
-  window.addEventListener('load', () => {
-    const formContainer = document.getElementById('form-container');
-    const mainContainer = document.getElementById('main-container');
-    
-    // Calculate the height of the contact form container
-    const contactFormHeight = formContainer.offsetHeight;
-    
-    // Set the initial position of the form container above the viewport by its height
-    formContainer.style.top = `-${contactFormHeight}px`;
-    
-    let isFormVisible = false;
-    
-    document.getElementById('sliderButton').addEventListener('click', function() {
-      if (isFormVisible) {
-        // Hide the contact form
-        formContainer.style.transform = `translateY(0)`;
-        mainContainer.style.transform = `translateY(0)`;
-      } else {
-        // Show the contact form
-        formContainer.style.transform = `translateY(${contactFormHeight}px)`;
-        mainContainer.style.transform = `translateY(${contactFormHeight}px)`;
-      }
-      isFormVisible = !isFormVisible;
-    });
-  });
-</script>
+<style is:global>
+  .btn {
+    @apply
+    rounded-full px-6 py-3 tracking-wider leading-snug font-bold ring-4 ring-transparent border-b-4 cursor-pointer
+    disabled:cursor-not-allowed disabled:shadow-transparent disabled:opacity-30;
+  }
+  .btn-purple {
+    @apply
+    text-white bg-violet-400 border-indigo-700/30 shadow-xl shadow-purple-600/25
+    enabled:hover:ring-violet-300 enabled:hover:bg-purple-400/50 enabled:hover:border-purple-700/50
+    focus:ring-violet-300 focus:bg-purple-400/50 focus:border-purple-700/50;
+  }
+  .btn-green {
+    @apply
+    text-white bg-emerald-500 border-teal-700/50 shadow-lg shadow-emerald-400/50 
+    enabled:hover:bg-emerald-400 enabled:hover:border-teal-600/50 enabled:hover:ring-teal-200 
+    focus:bg-emerald-400 focus:border-teal-600/50 focus:ring-teal-200;
+  }
+</style>
