@@ -13,8 +13,8 @@ const colors = getColors();
   </div>
 
   <main id="main-container" class="transition-transform duration-700">
-    <header class={`p-12 pt-4 relative flex flex-col ${colors[0].bg}`}>
-      <button id="sliderButton" class="self-end btn btn-purple">Contact Us</button>
+    <header class={`p-12 pt-0 relative flex flex-col ${colors[0].bg}`}>
+      <button id="sliderButton" class="self-end btn btn-hanging btn-purple">Contact Us</button>
       <h1 class={`text-center tracking-tighter font-black text-4xl sm:text-6xl mt-6 mb-12 ${colors[0].fg}`}>Tara's Cozy Nook</h1>
       <nav class="mx-auto w-fit bg-orange-200 divide-yellow-900/25 rounded-2xl divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 border-b-4 border-yellow-900/50 shadow-xl shadow-yellow-800/40 grid grid-cols-1 sm:grid-cols-4">
         {Object.values(Offerings).map(category => (
@@ -54,6 +54,44 @@ const colors = getColors();
     })}
   </main>
 </Layout>
+
+<style is:global>
+	@font-face {
+		font-family: 'Nunito';
+		font-style: normal;
+		font-weight: 200 1000;
+		font-display: swap;
+		src: url('/Nunito-VariableFont_wght.woff2') format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+  .btn {
+    @apply
+    tracking-wider leading-snug shadow-xl cursor-pointer disabled:cursor-not-allowed disabled:shadow-transparent disabled:opacity-30;
+  }
+  .btn-round {
+    @apply
+      rounded-full px-6 py-3 ring-4 border-b-4 font-bold;
+  }
+  .btn-hanging {
+    @apply
+      -mt-2 px-6 pt-4 pb-3 border-b-4 rounded-2xl rounded-t-xl font-semibold ;
+  }
+  .btn-purple {
+    @apply
+    text-indigo-50
+    bg-indigo-400 hover:bg-violet-400
+    border-b-indigo-500 hover:border-b-violet-500
+    shadow-indigo-500/50 hover:shadow-violet-500/70;
+  }
+  .btn-green {
+    @apply
+    text-white 
+    bg-emerald-500 enabled:hover:bg-emerald-400 focus:bg-emerald-400 
+    border-b-teal-700/50 enabled:hover:border-teal-600/50 focus:border-b-teal-600/50 
+    shadow-emerald-400/50 enabled:hover:shadow-emerald-300 focus:shadow-emerald-300
+    ring-transparent enabled:hover:ring-teal-200 focus:ring-teal-200;
+  }
+</style>
 
 <script>
     window.addEventListener('load', () => {
