@@ -83,6 +83,15 @@ const colors = getColors();
         adjustFormPosition();
     });
 
-    window.addEventListener('resize', adjustFormPosition);
+      const debounce = (func, wait) => {
+          let timeout;
+          return () => {
+              clearTimeout(timeout);
+              timeout = setTimeout(() => func(), wait);
+          };
+      };
+
+      window.addEventListener('resize', debounce(adjustFormPosition, 100));
   });
 </script>
+
