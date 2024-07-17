@@ -1,6 +1,6 @@
 [
   {
-    "fg": "text-violet-700/75",
+    "fg": "text-violet-900/50",
     "bg": "bg-gradient-to-b from-violet-300 to-violet-500",
     "saw": "fill-violet-500"
   },
