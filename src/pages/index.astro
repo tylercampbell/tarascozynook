@@ -8,7 +8,7 @@ const colors = getColors();
 ---
 
 <Layout title="Tara's Cozy Nook" twClasses="bg-stone-800">
-  <div id="form-container" class="absolute w-full transition-transform duration-700">
+  <div id="form-container" class="absolute w-full transition-transform duration-700 invisible">
     <ContactForm />
   </div>
 
@@ -59,54 +59,30 @@ const colors = getColors();
     window.addEventListener('load', () => {
     const formContainer = document.getElementById('form-container');
     const mainContainer = document.getElementById('main-container');
-    
-    // Calculate the height of the contact form container
-    const contactFormHeight = formContainer.offsetHeight;
-    
-    // Set the initial position of the form container above the viewport by its height
-    formContainer.style.top = `-${contactFormHeight}px`;
-    
+    let contactFormHeight = formContainer.offsetHeight;
     let isFormVisible = false;
-    
-    document.getElementById('sliderButton').addEventListener('click', function() {
-      if (isFormVisible) {
-        // Hide the contact form
-        formContainer.style.transform = `translateY(0)`;
-        mainContainer.style.transform = `translateY(0)`;
-      } else {
-        // Show the contact form
-        formContainer.style.transform = `translateY(${contactFormHeight}px)`;
-        mainContainer.style.transform = `translateY(${contactFormHeight}px)`;
-      }
-      isFormVisible = !isFormVisible;
+
+    const adjustFormPosition = () => {
+        contactFormHeight = formContainer.offsetHeight;
+        formContainer.style.top = `-${contactFormHeight}px`;
+
+        if (isFormVisible) {
+            formContainer.style.transform = `translateY(${contactFormHeight}px)`;
+            mainContainer.style.transform = `translateY(${contactFormHeight}px)`;
+        } else {
+            formContainer.style.transform = `translateY(0)`;
+            mainContainer.style.transform = `translateY(0)`;
+        }
+    };
+
+    adjustFormPosition();
+    formContainer.classList.remove('invisible');
+
+    document.getElementById('sliderButton').addEventListener('click', () => {
+        isFormVisible = !isFormVisible;
+        adjustFormPosition();
     });
+
+    window.addEventListener('resize', adjustFormPosition);
   });
 </script>
-
-<style is:global>
-	@font-face {
-		font-family: 'Nunito';
-		font-style: normal;
-		font-weight: 200 1000;
-		font-display: swap;
-		src: url('/Nunito-VariableFont_wght.woff2') format('woff2');
-		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-	}
-  .btn {
-    @apply
-    rounded-full px-6 py-3 tracking-wider leading-snug font-bold ring-4 ring-transparent border-b-4 cursor-pointer
-    disabled:cursor-not-allowed disabled:shadow-transparent disabled:opacity-30;
-  }
-  .btn-purple {
-    @apply
-    text-white bg-violet-400 border-indigo-700/30 shadow-xl shadow-purple-600/25
-    enabled:hover:ring-violet-300 enabled:hover:bg-purple-400/50 enabled:hover:border-purple-700/50;
-    /* focus:ring-violet-300 focus:bg-purple-400/50 focus:border-purple-700/50; */
-  }
-  .btn-green {
-    @apply
-    text-white bg-emerald-500 border-teal-700/50 shadow-lg shadow-emerald-400/50 
-    enabled:hover:bg-emerald-400 enabled:hover:border-teal-600/50 enabled:hover:ring-teal-200 
-    focus:bg-emerald-400 focus:border-teal-600/50 focus:ring-teal-200;
-  }
-</style>
