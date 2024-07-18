@@ -1,6 +1,6 @@
 ---
 import Book from './Book.astro';
-import SawtoothPattern from './Sawtooth.astro';
+import SvgSawtooth from './SvgSawtooth.astro';
 
 interface BookType {
   image: string;
@@ -22,7 +22,7 @@ const { id, title, bgColorClass, fgColorClass, sawColorClass, books, lazy = true
 ---
 <article class={bgColorClass}>
 
-  <SawtoothPattern id={`sawtoothPattern${id}`} colorClass={sawColorClass} />
+  <SvgSawtooth id={`sawtoothPattern${id}`} colorClass={sawColorClass} />
 
   <section class='px-8 py-16'>
     <h2 id={id} class={`scroll-mt-6 text-2xl sm:text-4xl font-black mb-6 ${fgColorClass}`}>{title}</h2>

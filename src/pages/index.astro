@@ -1,26 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
 import Shelf from '../components/Shelf.astro';
 import Offerings from '../data/offerings.json';
 import { getColors, getBooksByNewStatus, getBooksByCategory } from '../utils/helpers';
-
 const colors = getColors();
 ---
 
-<Layout title="Tara's Cozy Nook">
+<Layout title="Tara's Cozy Nook" twClasses="bg-stone-800">
+  <div id="form-container" class="absolute w-full transition-transform duration-500 invisible">
+    <ContactForm />
+  </div>
 
-  <header class={`p-12 relative ${colors[0].bg}`}>
-    <h1 class={`text-center font-black text-4xl sm:text-6xl mt-6 mb-12 ${colors[0].fg}`}>Tara's Cozy Nook</h1>
-    <nav class='mx-auto w-fit bg-orange-200 divide-yellow-900/25 rounded-2xl divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 border-b-4 border-orange-900/50 shadow-xl shadow-orange-900/40 grid grid-cols-1 sm:grid-cols-4'>
-      {Object.values(Offerings).map(category => (
-        <div class='flex p-4 text-center place-items-center justify-center'>
-          <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} class='font-bold sm:text-lg text-amber-900/80 hover:underline hover:text-black'>{category.name}</a>
-        </div>
-      ))}
-    </nav>
-  </header>
+  <main id="main-container" class="transition-transform duration-500">
+    <header class={`px-4 sm:px-12 pt-0 pb-12 relative flex flex-col ${colors[0].bg}`}>
+      <button id="sliderButton" class="self-end btn btn-hanging btn-purple text-sm sm:text-base">Contact Us</button>
+      <h1 class={`text-center tracking-tighter font-black text-4xl sm:text-6xl mt-12 mb-12 ${colors[0].fg}`}>Tara's Cozy Nook</h1>
+      <nav class="mx-auto w-fit bg-orange-200 divide-yellow-900/25 rounded-2xl divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 border-b-4 border-yellow-900/50 shadow-xl shadow-yellow-800/40 grid grid-cols-1 sm:grid-cols-4">
+        {Object.values(Offerings).map(category => (
+          <div class="flex p-4 text-center place-items-center justify-center">
+            <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} class="tracking-wide font-bold sm:text-lg leading-tight sm:leading-tight text-amber-950/70 hover:text-amber-900 hover:underline">{category.name}</a>
+          </div>
+        ))}
+      </nav>
+    </header>
 
-  <main>
     <Shelf
       id="new-books"
       title="🎉 New Releases 🎉"
@@ -50,3 +54,82 @@ const colors = getColors();
     })}
   </main>
 </Layout>
+
+<style is:global>
+	@font-face {
+		font-family: 'Nunito';
+		font-style: normal;
+		font-weight: 200 1000;
+		font-display: swap;
+		src: url('/Nunito-VariableFont_wght.woff2') format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+  .btn {
+    @apply
+    tracking-wider leading-snug shadow-xl cursor-pointer disabled:cursor-not-allowed disabled:shadow-transparent disabled:opacity-30;
+  }
+  .btn-round {
+    @apply
+      rounded-full px-6 py-3 ring-4 border-b-4 font-bold;
+  }
+  .btn-hanging {
+    @apply
+      -mt-2 px-6 pt-4 pb-3 border-b-4 rounded-2xl rounded-t-xl font-semibold ;
+  }
+  .btn-purple {
+    @apply
+    text-indigo-50 hover:text-white
+    bg-indigo-400 hover:bg-violet-400
+    border-b-indigo-500 hover:border-b-fuchsia-600/30
+    shadow-indigo-500/50 hover:shadow-purple-300/70;
+  }
+  .btn-green {
+    @apply
+    text-white 
+    bg-emerald-500 enabled:hover:bg-emerald-400 focus:bg-emerald-400 
+    border-b-teal-700/50 enabled:hover:border-teal-600/50 focus:border-b-teal-600/50 
+    shadow-emerald-400/50 enabled:hover:shadow-emerald-300 focus:shadow-emerald-300
+    ring-transparent enabled:hover:ring-teal-200 focus:ring-teal-200;
+  }
+</style>
+
+<script>
+    window.addEventListener('load', () => {
+    const formContainer = document.getElementById('form-container');
+    const mainContainer = document.getElementById('main-container');
+    let contactFormHeight = formContainer.offsetHeight;
+    let isFormVisible = false;
+
+    const adjustFormPosition = () => {
+        contactFormHeight = formContainer.offsetHeight;
+        formContainer.style.top = `-${contactFormHeight}px`;
+
+        if (isFormVisible) {
+            formContainer.style.transform = `translateY(${contactFormHeight}px)`;
+            mainContainer.style.transform = `translateY(${contactFormHeight}px)`;
+        } else {
+            formContainer.style.transform = `translateY(0)`;
+            mainContainer.style.transform = `translateY(0)`;
+        }
+    };
+
+    adjustFormPosition();
+    formContainer.classList.remove('invisible');
+
+    document.getElementById('sliderButton').addEventListener('click', () => {
+        isFormVisible = !isFormVisible;
+        adjustFormPosition();
+    });
+
+      const debounce = (func, wait) => {
+          let timeout;
+          return () => {
+              clearTimeout(timeout);
+              timeout = setTimeout(() => func(), wait);
+          };
+      };
+
+      window.addEventListener('resize', debounce(adjustFormPosition, 100));
+  });
+</script>
+

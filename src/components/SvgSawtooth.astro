@@ -1,13 +1,14 @@
 ---
 interface Props {
   id: string;
+  twClasses?: string;
   colorClass: string;
 }
 
-const { id, colorClass }: Props = Astro.props;
+const { id, twClasses, colorClass }: Props = Astro.props;
 ---
 
-<svg width="100%" height="16">
+<svg width="100%" height="16" class={twClasses}>
   <defs>
     <pattern id={id} width="32" height="16" patternUnits="userSpaceOnUse">
       <polygon points="0,0 16,16 32,0" class={colorClass} />
