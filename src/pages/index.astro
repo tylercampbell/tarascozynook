@@ -8,14 +8,14 @@ const colors = getColors();
 ---
 
 <Layout title="Tara's Cozy Nook" twClasses="bg-stone-800">
-  <div id="form-container" class="absolute w-full transition-transform duration-700 invisible">
+  <div id="form-container" class="absolute w-full transition-transform duration-500 invisible">
     <ContactForm />
   </div>
 
-  <main id="main-container" class="transition-transform duration-700">
-    <header class={`p-12 pt-0 relative flex flex-col ${colors[0].bg}`}>
-      <button id="sliderButton" class="self-end btn btn-hanging btn-purple">Contact Us</button>
-      <h1 class={`text-center tracking-tighter font-black text-4xl sm:text-6xl mt-6 mb-12 ${colors[0].fg}`}>Tara's Cozy Nook</h1>
+  <main id="main-container" class="transition-transform duration-500">
+    <header class={`px-4 sm:px-12 pt-0 pb-12 relative flex flex-col ${colors[0].bg}`}>
+      <button id="sliderButton" class="self-end btn btn-hanging btn-purple text-sm sm:text-base">Contact Us</button>
+      <h1 class={`text-center tracking-tighter font-black text-4xl sm:text-6xl mt-12 mb-12 ${colors[0].fg}`}>Tara's Cozy Nook</h1>
       <nav class="mx-auto w-fit bg-orange-200 divide-yellow-900/25 rounded-2xl divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 border-b-4 border-yellow-900/50 shadow-xl shadow-yellow-800/40 grid grid-cols-1 sm:grid-cols-4">
         {Object.values(Offerings).map(category => (
           <div class="flex p-4 text-center place-items-center justify-center">
