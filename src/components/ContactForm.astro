@@ -1,6 +1,32 @@
 ---
 import SvgBoxTop from './SvgBoxTop.astro';
 ---
+
+<section id="contact" class="relative w-full pt-8 sm:pt-16">
+
+  <SvgBoxTop id="box" twClasses="absolute bottom-0" />
+
+  <aside id="success" class="hidden absolute w-full h-full flex-col items-center justify-center text-center">
+    <div class="text-4xl sm:text-8xl flex">
+      <p class="-rotate-12 mt-2">🐶</p>
+      <p class="animate-bounce">🥳</p>
+      <p class="rotate-12">😸</p>
+    </div>
+    <p class="sm:mt-4 text-4xl sm:text-6xl text-emerald-300 font-bold -rotate-3">Hey thanks!</p>
+  </aside>
+
+  <article id="paper" class="relative w-full transition origin-bottom px-8 sm:px-16 md:px-0">
+    <form name="contact" method="POST" action="/#contact" data-netlify="true" class="max-w-2xl mx-auto relative h-full p-4 sm:p-16 pb-12 flex flex-col bg-gradient-to-b from-purple-50 via-purple-50 to-indigo-200">
+      <label for="message" class="form-label">Dear Tara,</label>
+      <textarea id="message" name="message" placeholder="u make nice books" rows="3" data-min-rows="3" class="form-input"></textarea>
+      <label for="sender" class="mt-8 sm:mt-16 form-label">From,</label>
+      <input id="sender" name="sender" placeholder="Your name or email" type="text" class="form-input max-w-md">
+      <button id="submit" disabled type="submit" class="mt-8 sm:mt-12 self-end text-sm sm:text-lg -rotate-3 btn btn-round btn-green">SEND</button>
+    </form>
+  </article>
+
+</section>
+
 <style>
   .form-label {
     @apply
@@ -17,35 +43,19 @@ import SvgBoxTop from './SvgBoxTop.astro';
     rounded-lg border-none  
     placeholder-indigo-700/80;
   }
+  .btn-round {
+    @apply
+      rounded-full px-6 py-3 ring-4 border-b-4 font-bold;
+  }
+  .btn-green {
+    @apply
+    text-white 
+    bg-emerald-500 enabled:hover:bg-emerald-400 focus:bg-emerald-400 
+    border-b-teal-700/50 enabled:hover:border-teal-600/50 focus:border-b-teal-600/50 
+    shadow-emerald-400/50 enabled:hover:shadow-emerald-300 focus:shadow-emerald-300
+    ring-transparent enabled:hover:ring-teal-200 focus:ring-teal-200;
+  }
 </style>
-
-<section id="contact" class="relative w-full pt-8 sm:pt-16">
-
-  <SvgBoxTop id="box" twClasses="absolute bottom-0" />
-  
-  <aside id="success" class="hidden absolute w-full h-full flex-col items-center justify-center text-center">
-    <div class="text-4xl sm:text-8xl flex">
-      <p class="-rotate-12 mt-2">🐶</p>
-      <p class="animate-bounce">🥳</p>
-      <p class="rotate-12">😸</p>
-    </div>
-    <p class="sm:mt-4 text-4xl sm:text-6xl text-emerald-300 font-bold -rotate-3">Hey thanks!</p>
-  </aside>
-
-  <article id="paper" class="relative w-full transition origin-bottom px-8 sm:px-16 md:px-0">
-    <form name="contact" method="POST" action="/#contact" data-netlify="true" class="max-w-2xl mx-auto relative h-full p-4 sm:p-16 pb-12 flex flex-col bg-gradient-to-b from-purple-50 via-purple-50 to-indigo-200">
-
-      <label for="message" class="form-label">Dear Tara,</label>
-      <textarea id="message" name="message" placeholder="u make nice books" rows="3" data-min-rows="3" class="form-input"></textarea>
-
-      <label for="sender" class="mt-8 sm:mt-16 form-label">From,</label>
-      <input id="sender" name="sender" placeholder="Your name or email" type="text" class="form-input max-w-md">
-
-      <button id="submit" disabled type="submit" class="mt-8 sm:mt-12 self-end text-sm sm:text-lg -rotate-3 btn btn-round btn-green">SEND</button>
-    </form>
-  </article>
-
-</section>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
