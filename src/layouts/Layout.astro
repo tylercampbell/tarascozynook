@@ -28,6 +28,12 @@ const { title, twClasses }:Props = Astro.props;
           image: "https://tarascozynook.com/ogimage.jpg",
         }
       }}
+			extend={{
+				// extending the default meta tags
+				meta: [
+					{ name: "theme-color", content: "#6d28d9" },
+				],
+			}}
     />
 	</head>
 	<body class={twClasses}>
