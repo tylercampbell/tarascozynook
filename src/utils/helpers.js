@@ -1,9 +1,3 @@
-import colorsData from '../data/colors.json';
-
-export function getColors() {
-  return colorsData;
-}
-
 export function getBooksByNewStatus(offerings, isNew) {
   return Object.keys(offerings).flatMap(categoryKey => {
     return Object.keys(offerings[categoryKey].series).flatMap(seriesKey => {
