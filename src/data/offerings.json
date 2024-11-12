@@ -1,20 +1,25 @@
 {
   "activityBooks": {
-    "name": "Activity Books",
+    "name": "Word Search",
     "series": {
       "wordSearch": {
         "name": "Word Search",
         "books": [
           {
             "new": true,
+            "name": "Around the World! Big Word Search Book for Adults Large Print: 100 Travel-Themed Word Find Puzzles",
+            "href": "#",
+            "image": "/src/assets/search-3.jpg"
+          },
+          {
             "name": "Big Large Print Word Search for Adults and Seniors",
             "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0D92CLT1G",
-            "image": "/src/assets/word-search-2024.jpg"
+            "image": "/src/assets/search-2.jpg"
           },
           {
             "name": "Large Print Word Search",
             "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CJLMV46R",
-            "image": "/src/assets/word-search-2023.jpg"
+            "image": "/src/assets/search-1.jpg"
           }
         ]
       }
