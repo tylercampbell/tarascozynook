@@ -16,8 +16,8 @@ const colors = getColors();
     </header>
 
     <nav class="sm:sticky z-10 top-0">
-      <div class="bg-violet-500 p-4 pb-6">
-        <div class="flex flex-col sm:flex-row max-w-fit mx-auto rounded-xl overflow-hidden divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 divide-amber-700/20 shadow-xl shadow-amber-500/50 border-b-4 border-amber-600/60 md:text-lg">
+      <div class="bg-violet-500 p-4">
+        <div class="flex flex-col sm:flex-row max-w-fit mx-auto rounded-xl overflow-hidden divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 divide-amber-700/20 border-b-[6px] border-amber-600/60 shadow-lg shadow-amber-400/30 md:text-lg">
           {Object.values(Offerings).map(category => (
             <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} 
             class="btn-nav
@@ -77,7 +77,7 @@ const colors = getColors();
     @apply  
     flex p-5 place-items-center justify-center text-center tracking-wide font-bold leading-none 
     hover:underline hover:bg-gradient-to-b
-    text-amber-800 bg-orange-200 hover:to-orange-200 hover:from-amber-50 ;
+    text-amber-800 hover:text-amber-700/80 bg-orange-200 hover:to-orange-200 hover:from-amber-50 ;
   }
   .btn-hanging {
     @apply

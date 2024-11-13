@@ -6,11 +6,11 @@ const colors = getColors();
 <div class={`${colors[6].bg}`}>
 
   <aside class="w-full flex justify-center items-center py-16">
-    <button id="scrollToTopButton" aria-label="Scroll to top" class="text-lg btn btn-round btn-purple">Go to top</button>
+    <button id="scrollToTopButton" aria-label="Scroll to top" class="text-lg btn btn-round btn-purple">↑ Go to top</button>
   </aside>
   
   <section id="contact" class="relative w-full">  
-    <SvgBoxTop id="box" twClasses="absolute bottom-16"/>
+    <SvgBoxTop id="box" twClasses="absolute bottom-24"/>
     <aside id="success" class="hidden absolute w-full h-full flex-col items-center justify-center text-center">
       <div class="text-4xl sm:text-8xl flex">
         <p class="-rotate-12 mt-2">🐶</p>
@@ -29,7 +29,7 @@ const colors = getColors();
         <button id="submit" disabled type="submit" class="mt-8 sm:mt-12 self-end text-sm sm:text-lg -rotate-3 btn btn-round btn-green">SEND</button>
       </form>
     </article>
-    <div class="w-full h-16 bg-violet-800"></div>
+    <div class="w-full flex justify-center items-center h-24 bg-violet-800 text-center text-indigo-400 -mb-[1px]">© Tara's Cozy Nook</div>
   
   </section>
 
@@ -68,8 +68,8 @@ const colors = getColors();
     text-sm sm:text-lg
     text-sky-100 hover:text-white
     bg-indigo-500 hover:bg-violet-400
-    border-b-indigo-700 hover:border-b-fuchsia-600/30
-    shadow-indigo-500/50 hover:shadow-purple-300/70
+    border-b-indigo-700 hover:border-b-fuchsia-600/50
+    shadow-indigo-500/50 hover:shadow-fuchsia-400/50
     ring-sky-500/40 hover:ring-violet-400/50;
   }
 </style>
