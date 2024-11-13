@@ -5,53 +5,55 @@ import Shelf from '../components/Shelf.astro';
 import Offerings from '../data/offerings.json';
 import { getColors, getBooksByNewStatus, getBooksByCategory } from '../utils/helpers';
 const colors = getColors();
+
 ---
 
-<Layout title="Tara's Cozy Nook" twClasses="bg-stone-800">
-  <div id="form-container" class="absolute w-full transition-transform duration-500 invisible">
-    <ContactForm />
-  </div>
-
+<Layout title="Tara's Cozy Nook" twClasses="bg-teal-200">
   <main id="main-container" class="transition-transform duration-500">
-    <header class={`px-4 sm:px-12 pt-0 pb-12 relative flex flex-col ${colors[0].bg}`}>
-      <button id="sliderButton" class="self-end btn btn-hanging btn-purple text-sm sm:text-base">Contact Us</button>
-      <h1 class={`text-center tracking-tighter font-black text-4xl sm:text-6xl mt-12 mb-12 ${colors[0].fg}`}>Tara's Cozy Nook</h1>
-
-      <nav class="
-        grid grid-cols-1 sm:grid-cols-4
-        mx-auto rounded-2xl overflow-hidden
-        divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 divide-amber-800/20
-        shadow-xl shadow-amber-500/50 
-        border-b-4 border-amber-600/60
-        md:text-lg
-        ">
-        {Object.values(Offerings).map(category => (
-          <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} 
-          class="
-            flex p-6 place-items-center justify-center text-center tracking-wide font-bold  leading-none 
-            text-amber-950/70 hover:text-amber-900 hover:underline
-            bg-orange-200 hover:bg-gradient-to-b hover:from-amber-100 hover:to-orange-200
-          ">{category.name}</a>
-        ))}
-      </nav>
-
+    
+    <header class={`px-4 sm:px-12 relative flex flex-col ${colors[0].bg}`}>
+      <h1 class="text-indigo-50 text-center tracking-tighter font-black text-4xl sm:text-6xl mt-24 mb-12">Tara's Cozy Nook</h1>
     </header>
+
+    <nav class="sm:sticky z-10 top-0">
+      <div class="bg-violet-500 p-4 pb-6">
+        <div class="flex flex-col sm:flex-row max-w-fit mx-auto rounded-xl overflow-hidden divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 divide-amber-700/20 shadow-xl shadow-amber-500/50 border-b-4 border-amber-600/60 md:text-lg">
+          {Object.values(Offerings).map(category => (
+            <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} 
+            class="btn-nav
+            ">{category.name}</a>
+          ))}
+          <a href="#contact" class="btn-nav">Contact Us</a>
+        </div>   
+      </div>
+      <svg width="100%" height="16">
+        <defs>
+          <pattern id="inlinePattern" width="32" height="16" patternUnits="userSpaceOnUse" x="0">
+            <polygon points="0,0 16,16 32,0" class=`${colors[0].saw}` />
+          </pattern>
+        </defs>
+        <rect width="100%" height="16" fill="url(#inlinePattern)" />
+      </svg>
+    </nav>
+    
 
     <Shelf
       id="new-books"
       title="🎉 New Releases 🎉"
       bgColorClass={colors[1].bg}
       fgColorClass={colors[1].fg}
-      sawColorClass={colors[0].saw}
+      sawColorClass={colors[2].saw}
       books={getBooksByNewStatus(Offerings, true)}
       lazy={false}
     />
     
     {Object.keys(Offerings).map((categoryKey, index) => {
       const categoryData = Offerings[categoryKey];
-      const bgFgColorIndex = (index + 2) % colors.length;
-      const sawColorIndex = (index + 1) % colors.length;
       
+      // Adjust the index to start from 0 for amber
+      const bgFgColorIndex = (index + 2) % colors.length; // Start from 2 to get amber first
+      const sawColorIndex = (index + 3) % colors.length; // Start from 3 to get fill-indigo-400 first
+    
       return (
         <Shelf
           id={categoryData.name.replace(/\s+/g, '-').toLowerCase()}
@@ -64,10 +66,19 @@ const colors = getColors();
         />
       );
     })}
+
+    <ContactForm />
+
   </main>
 </Layout>
 
 <style>
+  .btn-nav {
+    @apply  
+    flex p-5 place-items-center justify-center text-center tracking-wide font-bold leading-none 
+    hover:underline hover:bg-gradient-to-b
+    text-amber-800 bg-orange-200 hover:to-orange-200 hover:from-amber-50 ;
+  }
   .btn-hanging {
     @apply
     -mt-2 px-6 pt-4 pb-3 border-b-4 rounded-2xl rounded-t-xl font-semibold ;

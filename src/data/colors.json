@@ -7,26 +7,31 @@
   {
     "fg": "text-teal-900/75",
     "bg": "bg-gradient-to-b from-teal-200 to-teal-400",
-    "saw": "fill-teal-400"
+    "saw": "fill-teal-200"
   },
   {
     "fg": "text-amber-900/75",
     "bg": "bg-gradient-to-b from-amber-100 to-amber-200",
-    "saw": "fill-amber-200"
+    "saw": "fill-amber-100"
   },
   {
     "fg": "text-blue-900/75",
     "bg": "bg-gradient-to-b from-blue-200 to-indigo-400",
-    "saw": "fill-indigo-400"
+    "saw": "fill-blue-200"
   },
   {
     "fg": "text-purple-900/75",
     "bg": "bg-gradient-to-b from-purple-200 to-purple-300",
-    "saw": "fill-purple-300"
+    "saw": "fill-purple-200"
   },
   {
     "fg": "text-rose-900/75",
     "bg": "bg-gradient-to-b from-rose-100 to-pink-300",
-    "saw": "fill-red-300"
+    "saw": "fill-rose-100"
+  },
+  {
+    "fg": "text-indigo-900/50",
+    "bg": "bg-gradient-to-b from-indigo-600 to-indigo-950",
+    "saw": "fill-indigo-600"
   }
 ]
