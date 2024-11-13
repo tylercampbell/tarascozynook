@@ -1,5 +1,8 @@
 ---
 ---
+<aside class="w-full flex justify-center items-center">
+  <button id="scrollToTopButton" aria-label="Scroll to top" class="my-12 text-lg btn btn-round btn-purple">Go to top</button>
+</aside>
 
 <section id="contact" class="relative w-full pt-8 sm:pt-16">
 
@@ -52,10 +55,27 @@
     shadow-emerald-400/50 enabled:hover:shadow-emerald-300 focus:shadow-emerald-300
     ring-transparent enabled:hover:ring-teal-200 focus:ring-teal-200;
   }
+  .btn-purple {
+    @apply
+    text-sky-100 hover:text-white
+    bg-indigo-800/30 hover:bg-violet-400
+    border-b-indigo-700 hover:border-b-fuchsia-600/30
+    shadow-indigo-500/50 hover:shadow-purple-300/70
+    ring-sky-300/40 hover:ring-violet-200/50
+    ;
+  }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+
+    const scrollToTopButton = document.getElementById('scrollToTopButton');
+    scrollToTopButton.addEventListener('click', scrollToTop);
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+
     const formElement = document.querySelector('form[name="contact"]');
     const messageInput = document.getElementById('message');
     const senderInput = document.getElementById('sender');

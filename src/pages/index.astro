@@ -6,26 +6,29 @@ import Offerings from '../data/offerings.json';
 import { getBooksByNewStatus, getBooksByCategory } from '../utils/helpers';
 ---
 
-<Layout title="Tara's Cozy Nook" twClasses="bg-indigo-300">
+<Layout title="Tara's Cozy Nook" twClasses="bg-indigo-400">
   <main id="main-container" class="transition-transform duration-500">
-    <header class="px-4 sm:px-12 pt-0 pb-12 relative flex flex-col">
-      <h1 class="text-indigo-950/60 text-center tracking-tighter font-black text-4xl sm:text-6xl mt-24 mb-12">Tara's Cozy Nook</h1>
+    
+    <header class="px-4 sm:px-12">
+      <h1 class="text-indigo-50 text-center tracking-tighter font-black text-4xl sm:text-6xl mt-24 mb-12">Tara's Cozy Nook</h1>
+    </header>
 
-      <nav class="
-        grid grid-cols-1 sm:grid-cols-5
-        mx-auto rounded-2xl overflow-hidden
-        divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 divide-amber-800/20
+    <nav class="sm:sticky z-10 top-0 p-4 sm:mb-12 backdrop-blur-xl bg-indigo-400/70">
+      <div class="
+        flex flex-col sm:flex-row max-w-fit
+        mx-auto rounded-xl overflow-hidden
+        divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 divide-amber-700/20
         shadow-xl shadow-amber-500/50 
         border-b-4 border-amber-600/60
         md:text-lg
-        ">
+      ">
         {Object.values(Offerings).map(category => (
           <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} class="btn-nav">{category.name}</a>
         ))}
         <a href="#contact" class="btn-nav">Contact Us</a>
-      </nav>
-    </header>
-
+      </div>
+    </nav>
+  
     <Shelf
       id="new-books"
       title="🎉 New Releases 🎉"
@@ -45,17 +48,16 @@ import { getBooksByNewStatus, getBooksByCategory } from '../utils/helpers';
       );
     })}
 
-    <!-- Move the ContactForm to the bottom -->
     <ContactForm />
+
   </main>
 </Layout>
 
 <style>
-
   .btn-nav {
-    @apply            
-    flex p-6 place-items-center justify-center text-center tracking-wide font-bold  leading-none 
-    text-amber-950/70 hover:text-amber-900 hover:underline
-    bg-orange-200 hover:bg-gradient-to-b hover:from-amber-100 hover:to-orange-200 ;
+    @apply  
+    flex p-5 place-items-center justify-center text-center tracking-wide font-bold leading-none 
+    hover:underline hover:bg-gradient-to-b
+    text-amber-800 bg-orange-200 hover:to-orange-200 hover:from-amber-50 ;
   }
 </style>
