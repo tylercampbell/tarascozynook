@@ -1,8 +1,9 @@
 [
   {
     "fg": "text-violet-900/50",
-    "bg": "bg-gradient-to-b from-violet-300 to-violet-500",
-    "saw": "fill-violet-500"
+    "bg": "bg-gradient-to-b from-purple-300 to-violet-600",
+    "nav": "bg-violet-600",
+    "saw": "fill-violet-600"
   },
   {
     "fg": "text-teal-900/75",
@@ -31,7 +32,7 @@
   },
   {
     "fg": "text-indigo-900/50",
-    "bg": "bg-gradient-to-b from-indigo-600 to-indigo-950",
-    "saw": "fill-indigo-600"
+    "bg": "bg-gradient-to-b from-indigo-800 via-sky-950 to-slate-900",
+    "saw": "fill-indigo-800"
   }
 ]

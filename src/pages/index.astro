@@ -11,12 +11,12 @@ const colors = getColors();
 <Layout title="Tara's Cozy Nook" twClasses="bg-teal-200">
   <main id="main-container" class="transition-transform duration-500">
     
-    <header class={`px-4 sm:px-12 relative flex flex-col ${colors[0].bg}`}>
+    <header class={` px-4 sm:px-12 relative flex flex-col ${colors[0].bg} `}>
       <h1 class="text-indigo-50 text-center tracking-tighter font-black text-4xl sm:text-6xl mt-24 mb-12">Tara's Cozy Nook</h1>
     </header>
 
-    <nav class="sm:sticky z-10 top-0">
-      <div class="bg-violet-500 p-4">
+    <nav class="sm:sticky z-10 top-0 -mt-px">
+      <div class={` p-4 ${colors[0].nav} `}>
         <div class="flex flex-col sm:flex-row max-w-fit mx-auto rounded-xl overflow-hidden divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 divide-amber-700/20 border-b-[6px] border-amber-600/60 shadow-lg shadow-amber-400/30 md:text-lg">
           {Object.values(Offerings).map(category => (
             <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} 
