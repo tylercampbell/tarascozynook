@@ -54,6 +54,10 @@ const colors = getColors();
     rounded-lg border-none  
     placeholder-indigo-700/80;
   }
+  .btn {
+    @apply
+    tracking-wider leading-snug shadow-xl cursor-pointer disabled:cursor-not-allowed disabled:shadow-transparent disabled:opacity-30;
+  }
   .btn-round {
     @apply
       rounded-full px-6 py-3 ring-4 border-b-4 font-bold;

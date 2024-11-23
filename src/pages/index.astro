@@ -89,56 +89,5 @@ import peachImage from '../assets/peach.png';
     hover:underline hover:bg-gradient-to-b
     text-amber-800 hover:text-amber-700/80 bg-orange-200 hover:to-orange-200 hover:from-amber-50 ;
   }
-  .btn-hanging {
-    @apply
-    -mt-2 px-6 pt-4 pb-3 border-b-4 rounded-2xl rounded-t-xl font-semibold ;
-  }
-  .btn-purple {
-    @apply
-    text-indigo-50 hover:text-white
-    bg-indigo-400 hover:bg-violet-400
-    border-b-indigo-500 hover:border-b-fuchsia-600/30
-    shadow-indigo-500/50 hover:shadow-purple-300/70;
-  }
 </style>
-
-<script>
-    window.addEventListener('load', () => {
-    const formContainer = document.getElementById('form-container');
-    const mainContainer = document.getElementById('main-container');
-    let contactFormHeight = formContainer.offsetHeight;
-    let isFormVisible = false;
-
-    const adjustFormPosition = () => {
-        contactFormHeight = formContainer.offsetHeight;
-        formContainer.style.top = `-${contactFormHeight}px`;
-
-        if (isFormVisible) {
-            formContainer.style.transform = `translateY(${contactFormHeight}px)`;
-            mainContainer.style.transform = `translateY(${contactFormHeight}px)`;
-        } else {
-            formContainer.style.transform = `translateY(0)`;
-            mainContainer.style.transform = `translateY(0)`;
-        }
-    };
-
-    adjustFormPosition();
-    formContainer.classList.remove('invisible');
-
-    document.getElementById('sliderButton').addEventListener('click', () => {
-        isFormVisible = !isFormVisible;
-        adjustFormPosition();
-    });
-
-      const debounce = (func, wait) => {
-          let timeout;
-          return () => {
-              clearTimeout(timeout);
-              timeout = setTimeout(() => func(), wait);
-          };
-      };
-
-      window.addEventListener('resize', debounce(adjustFormPosition, 100));
-  });
-</script>
 
