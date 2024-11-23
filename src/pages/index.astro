@@ -6,13 +6,23 @@ import Offerings from '../data/offerings.json';
 import { getColors, getBooksByNewStatus, getBooksByCategory } from '../utils/helpers';
 const colors = getColors();
 
+import { Image } from 'astro:assets';
+import peachImage from '../assets/peach.png';
 ---
 
 <Layout title="Tara's Cozy Nook" twClasses="bg-teal-200">
   <main id="main-container" class="transition-transform duration-500">
     
-    <header class={` px-4 sm:px-12 relative flex flex-col ${colors[0].bg} `}>
-      <h1 class="text-indigo-50 text-center tracking-tighter font-black text-4xl sm:text-6xl mt-24 mb-12">Tara's Cozy Nook</h1>
+    <header class={` py-8 sm:py-12 px-4 sm:px-12 relative flex flex-col gap-y-3 sm:gap-y-6 ${colors[0].bg} `}>
+      <Image 
+        src={peachImage}
+        alt="Peach logo" 
+        class="mx-auto w-20 sm:w-36 h-auto rotate-3"
+        width={300} 
+        height={300} 
+        loading="eager" 
+      />
+      <h1 class="text-white text-center tracking-tighter font-black text-4xl sm:text-6xl">Tara's Cozy Nook</h1>
     </header>
 
     <nav class="sm:sticky z-10 top-0 -mt-px">
