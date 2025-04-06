@@ -1,7 +1,7 @@
 [
   {
     "fg": "text-violet-900/50",
-    "bg": "bg-gradient-to-b from-purple-300 to-violet-600",
+    "bg": "bg-gradient-to-b from-violet-600 via-violet-400 to-violet-600",
     "nav": "bg-violet-600",
     "saw": "fill-violet-600"
   },
