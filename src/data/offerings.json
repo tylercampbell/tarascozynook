@@ -6,12 +6,12 @@
         "name": "Word Search",
         "books": [
           {
-            "new": true,
             "name": "Around the World! Big Word Search Book for Adults Large Print: 100 Travel-Themed Word Find Puzzles",
             "href": "https://www.amazon.com/dp/B0DMSWCTJ2",
             "image": "/src/assets/search-3.jpg"
           },
           {
+            "featured": true,
             "name": "Big Large Print Word Search for Adults and Seniors",
             "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0D92CLT1G",
             "image": "/src/assets/search-2.jpg"
@@ -32,6 +32,7 @@
         "name": "Affirmations",
         "books": [
           {
+            "featured": true,
             "name": "Positive Affirmations",
             "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0CHCSV6DC",
             "image": "/src/assets/coloring-affirmations.jpg"
@@ -62,6 +63,7 @@
         "name": "Animals",
         "books": [
           {
+            "featured": true,
             "name": "Fantastic Sea Creatures",
             "href": "https://kdp.amazon.com/amazon-dp-action/us/dualbookshelf.marketplacelink/B0C7JCBB2P",
             "image": "/src/assets/coloring-sea-creatures.jpg"

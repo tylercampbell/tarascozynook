@@ -3,14 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Shelf from '../components/Shelf.astro';
 import Offerings from '../data/offerings.json';
-import { getColors, getBooksByNewStatus, getBooksByCategory } from '../utils/helpers';
+import { getColors, getBooksByFeaturedStatus, getBooksByCategory } from '../utils/helpers';
 const colors = getColors();
 
 import { Image } from 'astro:assets';
 import peachImage from '../assets/peach.png';
 ---
 
-<Layout title="Tara's Cozy Nook" twClasses="bg-teal-200">
+<Layout title="Tara's Cozy Nook" twClasses=`${colors[1].hat}`>
   <main id="main-container" class="transition-transform duration-500">
     
     <header class={` py-8 sm:py-12 px-4 sm:px-12 relative flex flex-col gap-y-3 sm:gap-y-6 ${colors[0].bg} `}>
@@ -26,8 +26,9 @@ import peachImage from '../assets/peach.png';
     </header>
 
     <nav class="sm:sticky z-10 top-0 -mt-px">
-      <div class={` p-4 ${colors[0].nav} `}>
+      <div class={` p-4 ${colors[0].sticky} `}>
         <div class="flex flex-col sm:flex-row max-w-fit mx-auto rounded-xl overflow-hidden divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 divide-amber-700/20 border-b-[6px] border-amber-600/60 shadow-lg shadow-amber-400/30 md:text-lg">
+          <a href="#featured" class="btn-nav">Featured</a>
           {Object.values(Offerings).map(category => (
             <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} 
             class="btn-nav
@@ -48,12 +49,12 @@ import peachImage from '../assets/peach.png';
     
 
     <Shelf
-      id="new-books"
-      title="🎉 New Releases 🎉"
+      id="featured"
+      title="🎉 Recommended 🎉"
       bgColorClass={colors[1].bg}
       fgColorClass={colors[1].fg}
       sawColorClass={colors[2].saw}
-      books={getBooksByNewStatus(Offerings, true)}
+      books={getBooksByFeaturedStatus(Offerings, true)}
       lazy={false}
     />
     
