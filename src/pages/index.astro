@@ -27,7 +27,7 @@ import peachImage from '../assets/peach.png';
 
     <nav class="sm:sticky z-10 top-0 -mt-px">
       <div class={` p-4 ${colors[0].sticky} `}>
-        <div class="flex flex-col sm:flex-row max-w-fit mx-auto rounded-xl overflow-hidden divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 divide-amber-700/20 border-b-[6px] border-amber-600/60 shadow-lg shadow-amber-400/30 md:text-lg">
+        <div class="flex flex-col sm:flex-row max-w-fit mx-auto rounded-xl overflow-hidden divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 divide-[#F2BC85] border-b-[6px] border-amber-600/60 shadow-lg shadow-amber-400/30 md:text-lg">
           <a href="#featured" class="btn-nav">Featured</a>
           {Object.values(Offerings).map(category => (
             <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} 
