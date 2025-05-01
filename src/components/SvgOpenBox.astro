@@ -7,19 +7,26 @@ interface Props {
 const { id, twClasses }: Props = Astro.props;
 ---
 
+<style>
+  :root {
+    --color-light: #57534e;
+    --color-dark: #44403c;
+  }
+</style>
+
 <svg id={id} viewBox="0 0 2024 64" class={twClasses} >
   <defs>
     <linearGradient id="a" x1="1784" x2="2024" y1="32" y2="32" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#8b5cf6"/>
-      <stop offset="1" stop-color="#7c3aed"/>
+      <stop offset="0" stop-color="var(--color-light)"/>
+      <stop offset="1" stop-color="var(--color-dark)"/>
     </linearGradient>
     <linearGradient id="b" x1="0" x2="240" y1="32" y2="32" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#7c3aed"/>
-      <stop offset="1" stop-color="#8b5cf6"/>
+      <stop offset="0" stop-color="var(--color-dark)"/>
+      <stop offset="1" stop-color="var(--color-light)"/>
     </linearGradient>
   </defs>
   <path d="M2024 64h-240V0l240 64zM240 0v64H0L240 0zm0 0h1544v64H240z" class="cls-1"/>
   <path fill="url(#a)" d="M2024 64h-240V0l240 64z"/>
   <path fill="url(#b)" d="M240 0v64H0L240 0z"/>
-  <path fill="#7c3aed" d="M240 0h1544v64H240z"/>
+  <path fill="var(--color-dark)" d="M240 0h1544v64H240z"/>
 </svg>

@@ -1,9 +1,7 @@
 ---
-import SvgBoxTop from './SvgBoxTop.astro';
-import { getColors } from '../utils/helpers';
-const colors = getColors();
+import SvgBox from './SvgOpenBox.astro';
 ---
-<div class={`${colors[6].bg}`}>
+<div class="bg-gradient-to-b from-indigo-800 via-sky-950 to-slate-900">
 
   <aside class="w-full flex justify-center items-center py-16">
     <button id="scrollToTopButton" aria-label="Scroll to top" class="text-lg btn btn-round btn-purple">↑ Go to top</button>
@@ -11,7 +9,7 @@ const colors = getColors();
   
   <section id="contact" class="relative w-full">  
     
-    <SvgBoxTop id="box" twClasses="bottom-24 absolute mx-2 sm:mx-8"/>
+    <SvgBox id="box" twClasses="bottom-24 absolute mx-2 sm:mx-8"/>
     
     <aside id="success" class="hidden absolute w-full h-full flex-col items-center justify-center text-center">
       <div class="text-4xl sm:text-8xl flex">
@@ -32,7 +30,7 @@ const colors = getColors();
       </form>
     </article>
     
-    <div class="h-24 mx-2 sm:mx-8 flex justify-center items-center bg-violet-800 text-center text-indigo-400 -mb-[1px]">© Tara's Cozy Nook</div>
+    <div class="h-24 mx-2 sm:mx-8 flex justify-center items-center bg-stone-500 text-center text-stone-700 font-black -mb-[1px]">© Tara's Cozy Nook</div>
 
   </section>
 

@@ -1,6 +1,6 @@
 ---
 import Book from './Book.astro';
-import SvgSawtooth from './SvgSawtooth.astro';
+import SvgBottom from './SvgBorderBottom.astro';
 
 interface BookType {
   image: string;
@@ -38,6 +38,6 @@ const { id, title, bgColorClass, fgColorClass, sawColorClass, books, lazy = true
     </ul>
   </section>
   
-  <SvgSawtooth id={`sawtoothPattern${id}`} colorClass={sawColorClass} twClasses="-mb-px" />
-
+  <SvgBottom id={`sawtoothPattern${id}`} colorClass={sawColorClass} twClasses="-mb-px" />
+  
 </article>
