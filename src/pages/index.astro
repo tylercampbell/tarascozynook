@@ -15,17 +15,18 @@ import peachImage from '../assets/peach.png';
   <main id="main-container" class="transition-transform duration-500">
     
     <header class="pt-8 px-4 sm:px-12 relative flex flex-col bg-gradient-to-b from-indigo-300 to-violet-700">
-      
-      <h1 class="text-purple-100 text-center tracking-tighter font-black text-4xl sm:text-6xl text-shadow-lg/40 text-shadow-indigo-900">Tara's Cozy Nook</h1>
-      
-      <Image 
+      <h1 class="text-purple-100 text-center tracking-tight font-black text-4xl sm:text-6xl text-shadow-lg/40 text-shadow-indigo-900">Tara's Cozy Nook</h1>
+      <div class="bg-gradient-to-b rounded-full aspect-square w-fit mx-auto mt-9 mb-3 outline outline-indigo-800 border-b-8 ring-8
+        from-purple-200 to-violet-500 border-indigo-900 ring-violet-500 ">
+        <Image 
         src={peachImage}
         alt="Peach logo" 
-        class="mx-auto w-20 sm:w-36 h-auto rotate-3 py-6"
+        class="w-24 sm:w-32 h-auto -rotate-12 scale-110 -translate-y-2 -translate-x-0.5 mx-auto hover:rotate-12 hover:translate-x-1 transition-transform"
         width={300} 
         height={300} 
         loading="eager" 
-      />
+        />
+      </div>
     </header>
 
     <nav class="sm:sticky z-10 top-0 -mt-px">
