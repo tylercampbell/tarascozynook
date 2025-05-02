@@ -17,7 +17,7 @@ import peachImage from '../assets/peach.png';
     <header class="pt-8 px-4 sm:px-12 relative flex flex-col bg-gradient-to-b from-indigo-300 to-violet-700">
       <h1 class="text-purple-100 text-center tracking-tight font-black text-4xl sm:text-6xl text-shadow-lg/40 text-shadow-indigo-900">Tara's Cozy Nook</h1>
       <div class="bg-gradient-to-b rounded-full aspect-square w-fit mx-auto mt-9 mb-3 outline outline-indigo-800 border-b-8 ring-8
-        from-purple-200 to-violet-500 border-indigo-900 ring-violet-500 ">
+        from-purple-200 to-teal-400 border-indigo-800 ring-violet-500">
         <Image 
         src={peachImage}
         alt="Peach logo" 
@@ -31,12 +31,12 @@ import peachImage from '../assets/peach.png';
 
     <nav class="sm:sticky z-10 top-0 -mt-px">
       <div class="p-4 bg-violet-700">
-        <div class="flex flex-col sm:flex-row max-w-fit mx-auto rounded-xl overflow-hidden divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 divide-[#F2BC85] border-b-[6px] border-amber-600/60 shadow-lg shadow-amber-400/30 md:text-lg">
+        <div class="flex flex-col sm:flex-row max-w-fit mx-auto rounded-xl overflow-hidden divide-y-4 sm:divide-y-0 divide-x-0 sm:divide-x-4 divide-[#F2BC85] border-b-[6px] border-amber-600/60 shadow-lg shadow-amber-400/30">
           {Object.values(Offerings).map(category => (
             <a href={`#${category.name.replace(/\s+/g, '-').toLowerCase()}`} 
-            class="btn-nav">{category.name}</a>
+            class="btn-nav"><span>{category.icon}</span>{category.name}</a>
           ))}
-          <a href="#contact" class="btn-nav">Contact Us</a>
+          <a href="#contact" class="btn-nav"><span>💬</span>Contact Us</a>
         </div>   
       </div>
       <SvgTop id='navSaw' colorClass="fill-violet-700" twClasses="-mb-px" />

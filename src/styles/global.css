@@ -7,11 +7,16 @@
 
 .btn-nav {
   @apply  
-  flex p-5 place-items-center justify-center text-center tracking-wide font-bold leading-none 
+  flex p-5 place-items-center justify-center text-center 
+  tracking-wide font-bold leading-none
   hover:underline hover:bg-gradient-to-b
-  text-amber-800 hover:text-amber-950 bg-orange-200 hover:to-orange-200 hover:from-amber-50 ;
+  text-amber-800 hover:text-amber-950 bg-orange-200 hover:to-orange-200 hover:from-amber-50 
+  sm:flex-col lg:flex-row gap-x-1.5 gap-y-3;
 }
-
+.btn-nav span {
+  @apply
+  leading-0 text-xl sm:hidden lg:block;
+}
 .form-label {
   @apply
   mb-2

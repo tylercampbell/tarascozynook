@@ -1,6 +1,7 @@
 {
   "activityBooks": {
     "name": "Word Search",
+    "icon": "🔍",
     "series": {
       "wordSearch": {
         "name": "Word Search",
@@ -27,6 +28,7 @@
   },
   "coloringBooks": {
     "name": "Coloring Books",
+    "icon": "🎨",
     "series": {
       "affirmations": {
         "name": "Affirmations",
@@ -79,6 +81,7 @@
   },
   "guidedJournals": {
     "name": "Guided Journals",
+    "icon": "📋",
     "series": {
       "miscellaneous": {
         "name": "Miscellaneous",
@@ -94,6 +97,7 @@
   },
   "compositionNotebooks": {
     "name": "Composition Notebooks",
+    "icon": "📓",
     "series": {
       "miscellaneous": {
         "name": "Miscellaneous",

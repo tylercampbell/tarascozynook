@@ -24,7 +24,7 @@ const { id, title, bgColorClass, fgColorClass, sawColorClass, books, lazy = true
   
   <section class='px-8 pt-20 pb-28 max-w-7xl mx-auto'>
     <h2 id={id} class={`scroll-mt-6 sm:scroll-mt-32 text-2xl sm:text-4xl font-black mb-6 ${fgColorClass}`}>{title}</h2>
-    <ul class='gap-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
+    <ul class={`gap-16 grid ${id === 'featured' ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3' : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4'}`}>
       {books.map((book: BookType) => (
         <li>
           <Book
