@@ -30,7 +30,8 @@
   font-semibold tracking-wide 
   bg-indigo-200/60 focus:bg-white 
   rounded-lg border-none  
-  placeholder-indigo-700/80;
+  placeholder-indigo-700/80 focus:placeholder-transparent visited:placeholder-transparent
+  ;
 }
 .btn {
   @apply
